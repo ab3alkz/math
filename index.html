@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Кощи есебі : Фундаменталдық математика</title>
+    <title> Фундаменталдық математика</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,6 +33,7 @@
           href="./css/freelancehunt-all.7c168467.css"
           media="screen">
     <style type="text/css"></style>
+    <script src="1.js" defer></script>
 </head>
 <body data-ng-app="fhApp">
 <div id="top-nav">
@@ -41,11 +42,11 @@
             <div class="col-md-5" style="padding-top: 5px">
                 <a href="/"
                    class="hidden-xs hidden-sm img-responsive pull-left marker-no-tooltip logo-komekshi"
-                   id="header-logo">KOMEKSHI.KZ</a>
+                   id="header-logo">ESEPTE.KZ</a>
 
                 <a href="/"
                    class="visible-xs visible-sm img-responsive pull-left marker-no-tooltip logo-komekshi"
-                   id="header-logo-sm ">KOMEKSHI.KZ</a>
+                   id="header-logo-sm ">ESEPTE.KZ</a>
                 <div class="clearfix"></div>
                 <span class="logo-komekshi-span">Фундаменталдық математика бағытындағы есептерді шешу</span>
             </div>
@@ -114,7 +115,7 @@
 </span>
                     <span id="breadcrumb-skill" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"
                           itemprop="child">
-<span itemprop="title">Кощи есебі</span>
+<span itemprop="title">Eсеп</span>
 </span>
                     <span class="label label-green with-tooltip" title=""
                           data-original-title="Бұл парақша 265 рет қаралды">265</span>
@@ -127,7 +128,7 @@
             <div class="col-md-9 col-md-push-3">
                 <div id="projects-html" data-is-filter-active="1" data-page="1">
                     <div class="math-formula">
-                        y"(x)+2y'(x)-3y(x)=x2 } дифференциялдық теңдеу
+                        y"(x)+k1y'(x)+k2y(x)=f(x)  дифференциялдық теңдеу
                     </div>
                     <div class="math-formula">
                         y(0)=0
@@ -137,8 +138,20 @@
                     </div>
                 </div>
 
+                <p>1 коэфицент: <input type="text" id="n1"></p>
+                <p>2 коэфицент: <input type="text" id="n2"></p>
+                <p>функция: <input type="text" id="n3"></p>
+                <button onclick="plus()">Есепте</button>
+
+                <button> Есептелу жолы </button>
+
+                <hr>
+                <p id="out">Sheshimi</p>
                 <br>
             </div>
+
+
+
             <div class="col-md-3 col-md-pull-9">
                 <div class="well well-sm smaller">
                     Коши есебі – дифференциалдық теңдеулер теориясының негізгі есептерінің бірі. Оны бірінші рет жүйелі
