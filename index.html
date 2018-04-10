@@ -23,6 +23,7 @@
     <meta property="og:site_name" content="komekshi.kz">
     <link rel="stylesheet" href="css/css.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/utl.css" type="text/css" media="screen">
     <link rel="stylesheet"
           href="./css/bootstrap.min.css"
           type="text/css" media="screen">
@@ -33,7 +34,8 @@
           href="./css/freelancehunt-all.7c168467.css"
           media="screen">
     <style type="text/css"></style>
-    <script src="js/1.js" defer></script>
+    <script src="js/utl.js" defer></script>
+    <script src="js/prim1.js" defer></script>
 </head>
 <body data-ng-app="fhApp">
 <div id="top-nav">
@@ -127,15 +129,9 @@
         <div class="row">
             <div class="col-md-9 col-md-push-3">
                 <div id="projects-html" data-is-filter-active="1" data-page="1">
-                    <div class="math-formula">
-                        y"(x)+k1y'(x)+k2y(x)=f(x)  дифференциялдық теңдеу
+                    <div id="mathFormula">
                     </div>
-                    <div class="math-formula">
-                        y(0)=0
-                    </div>
-                    <div class="math-formula">
-                        y'(0)=0
-                    </div>
+
                 </div>
 
                 <p>1 коэфицент: <input type="text" id="n1"></p>
@@ -177,57 +173,7 @@
     <div id="footer-starter"></div>
     <div class="container">
         <div class="row" id="footer">
-            <div class="col-md-4 col-xs-12 clearfix">
-                <h4 style="color: inherit">Фриланс проекты и удаленная работа</h4>
-                <ul class="clearfix">
-                    <li>
-                        <a href="/projects" title="" class="with-tooltip"
-                           data-original-title="Показать все фриланс проекты">Фриланс проекты</a>
-                        <a class="fa-lg no-external-marker no-underline" href="/projects.rss"
-                           target="_blank" title="" rel="nofollow"
-                           data-original-title="RSS-лента новых фриланс проектов">
-                            <img src="./img/rss.svg"
-                                 width="12" height="12" alt="RSS">
-                        </a>
-                        <a class="fa-lg no-external-marker no-underline" href="http://twitter.com/freelancehunt"
-                           target="_blank" title="" rel="nofollow"
-                           data-original-title="Новые фриланс проекты в Twitter">
-                            <img src="./img/twitter.svg"
-                                 width="12" height="12" alt="Twitter">
-                        </a>
-                        <a class="fa-lg no-external-marker no-underline" href="https://t.me/FreelancehuntProjects"
-                           target="_blank" title="" rel="nofollow" data-original-title="Новые проекты в Telegram">
-                            <img src="./img/telegram.svg"
-                                 width="12" height="12" alt="Telegram">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/service/contests" title="" class="with-tooltip"
-                           data-original-title="Конкурсы для фрилансеров">Конкурсы</a>
-                        <a class="fa-lg no-external-marker no-underline" href="/contests.rss"
-                           target="_blank" title="" rel="nofollow"
-                           data-original-title="RSS-лента новых фриланc конкурсов">
-                            <img src="./img/rss.svg"
-                                 width="12" height="12" alt="RSS">
-                        </a>
-                    </li>
-                    <li><a href="/freelancers">Каталог фрилансеров</a></li>
-                    <li><a href="/employers">Все заказчики</a></li>
-                    <li><a href="/showcase" title=""
-                           data-original-title="Лучшие работы фрилансеров">Работы фрилансеров</a></li>
-                    <li><a href="/verification" title=""
-                           data-original-title="Сделаем фриланс честнее вместе">Проверка профиля</a></li>
-                    <li><a href="/my/api" title=""
-                           data-original-title="Программный доступ к сервису">Приложения и API</a></li>
-                    <li><a href="/service/safe" title=""
-                           data-original-title="Сервис безопасного фриланса">Сейф</a></li>
-                    <li><a href="/freelancers/map/fullscreen" title=""
-                           data-original-title="Все фрилансеры на карте мира">Карта фриланса</a></li>
-                    <li><a href="/service/plus" title=""
-                           data-original-title="Профиль Плюс — получите от фриланса больше!">Профиль Плюс</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-xs-12 clearfix">
+            <div class="col-md-6 col-xs-12 clearfix">
                 <h4 style="color: inherit">Полезная информация</h4>
                 <ul class="clearfix">
                     <li><a href="/register"><strong>Тіркелу</strong></a></li>
@@ -246,19 +192,10 @@
                     <li><a href="/statistics/rates" title=""
                            data-original-title="Распределение цен на рынке фриланса на базе прайс-листов, предоставленных исполнителями">Статистика
                         цен</a></li>
-                    <li>
-                        <a href="/blog/" title=""
-                           data-original-title="Новости сервиса Freelancehunt, фриланс истории и советы">Блог о
-                            фрилансе</a>
-                        <a class="fa-lg no-external-marker no-underline" href="/blog/rss/"
-                           target="_blank" title="" rel="nofollow" data-original-title="RSS-лента публикаций в блоге">
-                            <img src="./img/rss.svg"
-                                 width="12" height="12" alt="RSS">
-                        </a>
-                    </li>
+
                 </ul>
             </div>
-            <div class="col-md-4 col-xs-12 clearfix social-networks">
+            <div class="col-md-6 col-xs-12 clearfix social-networks">
                 <h4 style="color: inherit">Оставайтесь на связи!</h4>
                 <a class="fa-stack fa-lg no-external-marker no-underline" href="https://twitter.com/flhinside"
                    target="_blank" title="" rel="nofollow" data-original-title="Новости сервиса в Twitter">
@@ -398,17 +335,7 @@
 <script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
 <script src="./js/bootstrap.min.js"
         crossorigin="anonymous"></script>
-<script src="./js/bsnag-3.js"
-        data-apikey="8b72b5e46fa0f4792b787cbf8430aad4"></script>
-<script src="./js/vendor-all.8af22613.js"></script>
-<script src="./js/freelancehunt-all.64bcb065.js"></script>
-<script src="./js/likes.js"
-        defer="" async=""></script>
-<script type="text/javascript">
 
-    Pages.Project.list()
-
-</script>
 
 
 <script src="./js/update.min.js"

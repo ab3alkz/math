@@ -1,0 +1,38 @@
+.math-frame {
+   /* outline: 1px solid red;*/
+    height: 50px;
+}
+
+.math-frame:after, .math-frame:before {
+    display: table;
+    content: " ";
+    clear: both;
+}
+
+.math-frame .math-inner {
+    display: inline-block;
+    float: left;
+}
+
+.math-frame .math-inner .math-main {
+    font-size: 22px;
+    line-height: 28px;
+    display: inline-block;
+    float: left;
+    padding-right: 2px;
+    padding-top: 15px;
+
+}
+
+.math-frame .math-inner .math-sqrt {
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+}
+
+.math-frame .math-inner .math-index {
+    font-size: 12px;
+    display: inline-block;
+    padding-top: 28px;
+    float: left;
+}
