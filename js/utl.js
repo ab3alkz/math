@@ -52,3 +52,10 @@ function getBR() {
 function getFrame(val) {
     return getDiv(val, "frame");
 }
+
+function getMathPlus(x) {
+    if(!isNullOrEmpty(x) && x < 0) {
+        return ' - ' ;
+    }
+    return  ' + ' ;;
+}
