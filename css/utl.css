@@ -1,6 +1,7 @@
 .math-frame {
    /* outline: 1px solid red;*/
     height: 50px;
+    font-family: "PT Sans","Helvetica Neue",Arial,sans-serif!important;
 }
 
 .math-frame:after, .math-frame:before {

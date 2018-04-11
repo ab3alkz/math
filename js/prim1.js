@@ -48,7 +48,11 @@ function discriminant(a, b, c) {
         + isCondition(b == 1, '', getHtmlPlus(b)) + getHtmlMain('k')
         + isCondition(c == 1, '', getHtmlPlus(c)) + getHtmlMain(' = 0')
         + getTab() + getHtmlMain(' [ ≠ 0 ]'));
-    ;
+
+    res += getFrame(getHtmlMain('D =' + getNbsp()) + isCondition(b == 1, '', getHtmlMain(b * b))
+        + getHtmlMinus(4) + getHtmlMain(' * ')
+        + isCondition(a == 1, '', getHtmlMain(getMathMultiplication(a)))
+        + isCondition(c == 1, '', getHtmlMain(getMathMultiplication(c))));
 
 
     return res;

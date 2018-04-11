@@ -46,6 +46,9 @@ function isNullOrEmpty(e) {
 function getBR() {
     return '<br />'
 }
+function getNbsp() {
+    return '&nbsp;'
+}
 
 function getTab() {
     return getHtmlMain('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;');
@@ -61,9 +64,31 @@ function getMathPlus(x) {
     }
     return ' + ';
 }
+function getMathMinus(x) {
+    if (!isNullOrEmpty(x) && x < 0) {
+        return ' + ';
+    }
+    return ' - ';
+}
+
+/**
+ * кобейту
+ * @param x
+ * @returns {string}
+ */
+function getMathMultiplication(x) {
+    if (!isNullOrEmpty(x) && x < 0) {
+        return '('+x+')';
+    }
+    return x;
+}
 
 function getHtmlPlus(x) {
     return getDiv(getDiv(getMathPlus(x) + Math.abs(x), 'main'), 'inner');
+}
+
+function getHtmlMinus(x) {
+    return getDiv(getDiv(getMathMinus(x) + Math.abs(x), 'main'), 'inner');
 }
 
 function mathIsNumeric(n) {
