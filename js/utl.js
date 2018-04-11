@@ -7,7 +7,7 @@ function getHtmlSqrt(x, xSqrt) {
 }
 
 
-function getHtmlIndex(x, xIdx) {
+function getHtmlIdx(x, xIdx) {
     return getDiv(getDiv(x, 'main') + getDiv(xIdx, 'index'), 'inner');
 }
 
@@ -54,8 +54,12 @@ function getFrame(val) {
 }
 
 function getMathPlus(x) {
-    if(!isNullOrEmpty(x) && x < 0) {
-        return ' - ' ;
+    if (!isNullOrEmpty(x) && x < 0) {
+        return ' - ';
     }
-    return  ' + ' ;;
+    return ' + ';
+}
+
+function getHtmlPlus(x) {
+    return getDiv(getDiv(getMathPlus(x) + Math.abs(x), 'main'), 'inner');
 }
