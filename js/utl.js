@@ -2,10 +2,9 @@
  * Created by a.amanzhol on 09.04.2018.
  */
 function getHtmlSqrt(x, xSqrt) {
-    return getDiv(getDiv(x, 'main') + getDiv(xSqrt, 'index'), 'sqrt');
+    return getDiv(getDiv(x, 'main') + getDiv(xSqrt, 'sqrt'), 'inner');
 
 }
-
 
 function getHtmlIdx(x, xIdx) {
     return getDiv(getDiv(x, 'main') + getDiv(xIdx, 'index'), 'inner');
@@ -23,7 +22,6 @@ function getDiv(val, class_) {
             '</div>';
 }
 
-
 function nvl(val1, val2) {
     if (isNullOrEmpty(val1))
         return val2;
@@ -31,11 +29,11 @@ function nvl(val1, val2) {
         return val1;
 }
 
-function isNullDefVal(emptyVal, val, defVal) {
-    if (isNullOrEmpty(emptyVal))
-        return defVal;
+function isCondition(condition, trueVal, falseVAl) {
+    if (condition)
+        return trueVal;
     else
-        return val;
+        return falseVAl;
 }
 
 function isNullOrEmpty(e) {
@@ -47,6 +45,10 @@ function isNullOrEmpty(e) {
 
 function getBR() {
     return '<br />'
+}
+
+function getTab() {
+    return getHtmlMain('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;');
 }
 
 function getFrame(val) {
@@ -62,4 +64,13 @@ function getMathPlus(x) {
 
 function getHtmlPlus(x) {
     return getDiv(getDiv(getMathPlus(x) + Math.abs(x), 'main'), 'inner');
+}
+
+function mathIsNumeric(n) {
+    if(!$.isNumeric(n)) {
+        console.log("'" + n + "' сан болуы керек");
+        alert("'" + n + "' сан болуы керек");
+        return false;
+    }
+    return true;
 }

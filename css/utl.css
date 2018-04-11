@@ -27,6 +27,7 @@
 .math-frame .math-inner .math-sqrt {
     font-size: 12px;
     display: inline-block;
+    padding-top: 10px;
     float: left;
 }
 
@@ -35,4 +36,10 @@
     display: inline-block;
     padding-top: 28px;
     float: left;
+}
+
+.math-title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
 }

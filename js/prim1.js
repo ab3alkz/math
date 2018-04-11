@@ -13,21 +13,43 @@ function calcPrim1() {
         alert("2 коэфицент: '" + k2 + "' сан болуы керек");
         return;
     }
-    document.getElementById('out').innerHTML = getFormula(k1, k2);
+    document.getElementById('out').innerHTML = step1(k1, k2);
 }
 
 function getFormula(k1, k2) {
     return getFrame(
         getHtmlMain("y''(x)")
-        + isNullDefVal(k1, getHtmlPlus(k1), getHtmlIdx(' + k', 1)) + getHtmlMain("y'")
-        + isNullDefVal(k2, getHtmlPlus(k2), getHtmlIdx(' + k', 2))
+        + isCondition(!isNullOrEmpty(k1), getHtmlPlus(k1), getHtmlIdx(' + k', 1)) + getHtmlMain("y'")
+        + isCondition(!isNullOrEmpty(k2), getHtmlPlus(k2), getHtmlIdx(' + k', 2))
         + getHtmlMain("y(x) = f(x)")
-        )
-        + getFrame(getHtmlMain("y(0) = 0 "))
-        + getFrame(getHtmlMain("y'(0) = 0 "));
+    );
 }
 
 $(document).ready(function () {
-    document.getElementById('mathFormula').innerHTML = getFormula();
-
+    document.getElementById('mathFormula').innerHTML = getFormula()
+        + getFrame(getHtmlMain("y(0) = 0 "))
+        + getFrame(getHtmlMain("y'(0) = 0 "));
+    calcPrim1();
 });
+
+function step1(k1, k2) {
+    var res = getFormula(k1, k2);
+    res += getDiv('Дискриминант:', 'title');
+    res += discriminant(1, k1, k2);
+    return res;
+}
+
+function discriminant(a, b, c) {
+    if (!mathIsNumeric(a) || !mathIsNumeric(b) || !mathIsNumeric(c)) {
+        return;
+    }
+    var res = getFrame(
+        isCondition(a == 1, '', getHtmlMain(a)) + getHtmlSqrt('k', 2)
+        + isCondition(b == 1, '', getHtmlPlus(b)) + getHtmlMain('k')
+        + isCondition(c == 1, '', getHtmlPlus(c)) + getHtmlMain(' = 0')
+        + getTab() + getHtmlMain(' [ ≠ 0 ]'));
+    ;
+
+
+    return res;
+}
