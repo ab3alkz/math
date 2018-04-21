@@ -29,6 +29,10 @@ $(document).ready(function () {
     document.getElementById('mathFormula').innerHTML = getFormula()
         + getFrame(getHtmlMain("y(0) = 0 "))
         + getFrame(getHtmlMain("y'(0) = 0 "));
+
+
+
+
   //  calcPrim1();
 });
 
