@@ -1,8 +1,13 @@
 /**
  * Created by a.amanzhol on 09.04.2018.
  */
-function getHtmlSqrt(x, xSqrt) {
+function getHtmlSqr(x, xSqrt) {
     return getDiv(getDiv(x, 'main') + getDiv(xSqrt, 'sqrt'), 'inner');
+
+}
+
+function getHtmlSqrt(x) {
+    return getDiv(getDiv(getHtmlMain('√') + getHtmlMain(getDiv(x,'sqrt-inner')), 'main'), 'inner');
 
 }
 
@@ -46,6 +51,7 @@ function isNullOrEmpty(e) {
 function getBR() {
     return '<br />'
 }
+
 function getNbsp() {
     return '&nbsp;'
 }
@@ -64,6 +70,7 @@ function getMathPlus(x) {
     }
     return ' + ';
 }
+
 function getMathMinus(x) {
     if (!isNullOrEmpty(x) && x < 0) {
         return ' + ';
@@ -78,7 +85,7 @@ function getMathMinus(x) {
  */
 function getMathMultiplication(x) {
     if (!isNullOrEmpty(x) && x < 0) {
-        return '('+x+')';
+        return '(' + x + ')';
     }
     return x;
 }
@@ -92,10 +99,19 @@ function getHtmlMinus(x) {
 }
 
 function mathIsNumeric(n) {
-    if(!$.isNumeric(n)) {
+    if (!$.isNumeric(n)) {
         console.log("'" + n + "' сан болуы керек");
         alert("'" + n + "' сан болуы керек");
         return false;
     }
     return true;
+}
+
+function getFraction(top, bottom) {
+    var val = '<table><tr class="math-fraction-top"><td>' + top + '</td></tr><tr><td class="math-fraction-bottom">' + bottom + '</td></tr></table>';
+    return getDiv(val, "fraction");
+}
+
+function mathRound(num) {
+    return Math.round(num * 100) / 100;
 }

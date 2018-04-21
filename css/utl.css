@@ -1,7 +1,7 @@
 .math-frame {
-   /* outline: 1px solid red;*/
+    /* outline: 1px solid red;*/
     height: 50px;
-    font-family: "PT Sans","Helvetica Neue",Arial,sans-serif!important;
+    font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif !important;
 }
 
 .math-frame:after, .math-frame:before {
@@ -25,7 +25,7 @@
 
 }
 
-.math-frame .math-inner .math-sqrt {
+.math-frame .math-inner .math-sqr {
     font-size: 12px;
     display: inline-block;
     padding-top: 10px;
@@ -43,4 +43,26 @@
     font-size: 20px;
     font-weight: bold;
     line-height: 40px;
+    text-align: left;
+}
+
+.math-fraction {
+    float: left;
+    padding-left: 5px;
+}
+
+.math-fraction table {
+    padding-left: 35px;
+}
+
+.math-fraction .math-inner .math-main {
+    padding-top: 0px;
+}
+
+.math-fraction .math-fraction-top {
+    border-bottom: 2px solid #000;
+}
+
+.math-sqrt-inner {
+    border-top: 1px solid #000;
 }
