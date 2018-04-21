@@ -66,3 +66,13 @@
 .math-sqrt-inner {
     border-top: 1px solid #000;
 }
+
+.math-frame .math-brace {
+    font-size: 22px;
+    line-height: 28px;
+    display: inline-block;
+    float: left;
+    padding-right: 2px;
+    padding-top: 15px;
+
+}

@@ -2,12 +2,12 @@
  * Created by a.amanzhol on 09.04.2018.
  */
 function getHtmlSqr(x, xSqrt) {
-    return getDiv(getDiv(x, 'main') + getDiv(xSqrt, 'sqrt'), 'inner');
+    return getDiv(getDiv(x, 'main') + getDiv(xSqrt, 'sqr'), 'inner');
 
 }
 
 function getHtmlSqrt(x) {
-    return getDiv(getDiv(getHtmlMain('√') + getHtmlMain(getDiv(x,'sqrt-inner')), 'main'), 'inner');
+    return getDiv(getDiv(getHtmlMain('√') + getHtmlMain(getDiv(x, 'sqrt-inner')), 'main'), 'inner');
 
 }
 
@@ -113,5 +113,13 @@ function getFraction(top, bottom) {
 }
 
 function mathRound(num) {
-    return Math.round(num * 100) / 100;
+    return Math.round(num * 10) / 10;
+}
+
+function getHtmlBraceLeft() {
+    return getDiv('{', "brace")
+}
+
+function getHtmlBraceRight() {
+    return getDiv('}', "brace")
 }

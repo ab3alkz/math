@@ -46,7 +46,7 @@ function startCalc(k1, k2, key) {
     res += getDiscriminant(1, k1, k2, key);
 
     res += getBR() + getDiv('Ортақ шешімі:', 'title');
-    res += commonDecision(k1, k2, key);
+    res += commonDecision(resultObj[key].K1, resultObj[key].K2, key);
     return res;
 }
 
@@ -75,21 +75,33 @@ function getDiscriminant(a, b, c, key) {
 
     resultObj[key].K1 = mathRound((-2 - Math.sqrt(resultObj[key].D)) / 2);
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('K', 1) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
-    );
+            getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
+        );
 
 
     resultObj[key].K2 = mathRound((-2 + Math.sqrt(resultObj[key].D)) / 2);
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('K', 2) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
-    );
+            getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
+        );
 
     return res;
 }
 
 
-function commonDecision(a, b, key) {
-    return getFrame(
-        getHtmlIdx('Y', 1) + getHtmlMain("(x)")
+function commonDecision(k1, k2, key) {
+    var res = getFrame(
+        getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
+        + getHtmlIdx('c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
+        + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
+        + getTab() + getHtmlBraceRight()
+        + getHtmlIdx('c', 1) + getHtmlIdx(', c', 2) + getHtmlMain(' - кез келген тұрақтылар')
     );
+
+    res += getFrame(
+        getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
+        + getHtmlIdx('-3c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
+        + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
+    );
+
+    return res;
 }
