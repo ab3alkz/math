@@ -129,9 +129,9 @@ function getCramer(key) {
             getHtmlMain("Δ = ")
             + getDiv(
                 getDiv(1 + getBR() + '-3', 'cramer-left')
-                + getDiv(1 + getBR() + '15568', 'cramer-right')
+                + getDiv(1 + getBR() + '1', 'cramer-right')
                 , "cramer-border math-inner")
-        )
+        );
 
     return res;
 }
