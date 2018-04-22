@@ -80,3 +80,13 @@
     background: url("../img/brace_r.png") no-repeat;
     background-size:contain ;
 }
+
+.math-brace-left {
+    float: left;
+    height: 100px;
+    padding-top: 20px;
+    padding-left: 30px;
+    margin-rigth: 30px;
+    background: url("../img/brace_l.png") no-repeat;
+    background-size:contain ;
+}

@@ -97,11 +97,26 @@ function commonDecision(k1, k2, key) {
 
     res += getFrame(
         getHtmlIdx("y'", 1) + getHtmlMain("(x) = ")
-        + getHtmlIdx('-3c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
-        + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
+        + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
+        + getHtmlIdx(isCondition(k2 < 0, ' - ', ' + ') + isCondition(k2 == 1, '', k2) + 'c', 2)
+        + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
     );
 
-    res = getHtmlBraceRight(res, getFrame(getHtmlIdx('c', 1) + getHtmlIdx(', c', 2)+getHtmlMain(' - кез келген тұрақтылар')));
+    res = getHtmlBraceRight(res, getFrame(getHtmlIdx('c', 1) + getHtmlIdx(', c', 2) + getHtmlMain(' - кез келген тұрақтылар')));
 
+
+    res += getBR(2) + getHtmlBraceLeft(
+            getFrame(
+                getHtmlIdx('y', 1) + getHtmlMain("(0) = ")
+                + getHtmlIdx('c', 1)
+                + getHtmlIdx(' + c', 2) + getHtmlMain(' = 1 ')
+            )
+            + getFrame(
+                getHtmlIdx("y'", 1) + getHtmlMain("(0) = ")
+                + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1)
+                + getHtmlMain(' + ')
+                + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = 1 ')
+            )
+        );
     return res;
 }

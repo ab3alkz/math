@@ -28,7 +28,7 @@ function getDiv(val, class_) {
 }
 function getClearfix() {
 
-        return '<div class="clearfix"></div>';
+    return '<div class="clearfix"></div>';
 }
 
 function nvl(val1, val2) {
@@ -52,8 +52,16 @@ function isNullOrEmpty(e) {
         return false;
 }
 
-function getBR() {
-    return '<br />'
+function getBR(xCnt) {
+    if (nvl(xCnt, 0) > 1) {
+        var xBr = '';
+        for (var i = 1; i <= xCnt; i++) {
+            xBr += '<br />';
+        }
+        return xBr;
+    } else {
+        return '<br />';
+    }
 }
 
 function getNbsp() {
@@ -121,9 +129,9 @@ function mathRound(num) {
 }
 
 function getHtmlBraceLeft(val, braceTxt) {
-    return getDiv(val, "brace brace-left")
+    return getDiv(nvl(braceTxt,''), 'brace-left') + getDiv(val, "brace") + getClearfix()
 }
 
 function getHtmlBraceRight(val, braceTxt) {
-    return getDiv(val, "brace")+getDiv(braceTxt,'brace-rigth')+getClearfix()
+    return getDiv(val, "brace") + getDiv(braceTxt, 'brace-rigth') + getClearfix()
 }
