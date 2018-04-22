@@ -93,15 +93,15 @@ function commonDecision(k1, k2, key) {
         getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
         + getHtmlIdx('c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
         + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
-        + getTab() + getHtmlBraceRight()
-        + getHtmlIdx('c', 1) + getHtmlIdx(', c', 2) + getHtmlMain(' - кез келген тұрақтылар')
     );
 
     res += getFrame(
-        getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
+        getHtmlIdx("y'", 1) + getHtmlMain("(x) = ")
         + getHtmlIdx('-3c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
         + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
     );
+
+    res = getHtmlBraceRight(res, getFrame(getHtmlIdx('c', 1) + getHtmlIdx(', c', 2)+getHtmlMain(' - кез келген тұрақтылар')));
 
     return res;
 }

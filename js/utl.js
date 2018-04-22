@@ -26,6 +26,10 @@ function getDiv(val, class_) {
         return '<div class="math-' + class_ + '">' + val +
             '</div>';
 }
+function getClearfix() {
+
+        return '<div class="clearfix"></div>';
+}
 
 function nvl(val1, val2) {
     if (isNullOrEmpty(val1))
@@ -116,10 +120,10 @@ function mathRound(num) {
     return Math.round(num * 10) / 10;
 }
 
-function getHtmlBraceLeft() {
-    return getDiv('{', "brace")
+function getHtmlBraceLeft(val, braceTxt) {
+    return getDiv(val, "brace brace-left")
 }
 
-function getHtmlBraceRight() {
-    return getDiv('}', "brace")
+function getHtmlBraceRight(val, braceTxt) {
+    return getDiv(val, "brace")+getDiv(braceTxt,'brace-rigth')+getClearfix()
 }

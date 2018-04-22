@@ -67,12 +67,16 @@
     border-top: 1px solid #000;
 }
 
-.math-frame .math-brace {
-    font-size: 22px;
-    line-height: 28px;
-    display: inline-block;
+.math-brace {
     float: left;
-    padding-right: 2px;
-    padding-top: 15px;
+}
 
+.math-brace-rigth {
+    float: left;
+    height: 100px;
+    padding-top: 20px;
+    padding-left: 30px;
+    margin-left: 30px;
+    background: url("../img/brace_r.png") no-repeat;
+    background-size:contain ;
 }
