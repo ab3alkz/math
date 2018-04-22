@@ -60,7 +60,7 @@ function getDiscriminant(a, b, c, key) {
         isCondition(a == 1, '', getHtmlMain(a)) + getHtmlSqr('k', 2)
         + isCondition(b == 1, '', getHtmlPlus(b)) + getHtmlMain('k')
         + isCondition(c == 1, '', getHtmlPlus(c)) + getHtmlMain(' = 0')
-        + getTab() + getHtmlMain(' [ ≠ 0 ]'));
+        + getHtmlTab() + getHtmlMain(' [ ≠ 0 ]'));
 
     res += getFrame(getHtmlMain('D =' + getNbsp()) + isCondition(b == 1, '', getHtmlMain(b * b))
         + getHtmlMinus(4) + getHtmlMain(' * ')
@@ -118,5 +118,20 @@ function commonDecision(k1, k2, key) {
                 + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = 1 ')
             )
         );
+
+    res += getCramer(key);
+    return res;
+}
+
+function getCramer(key) {
+    var res = getBR(1) +
+        getFrame(
+            getHtmlMain("Δ = ")
+            + getDiv(
+                getDiv(1 + getBR() + '-3', 'cramer-left')
+                + getDiv(1 + getBR() + '15568', 'cramer-right')
+                , "cramer-border math-inner")
+        )
+
     return res;
 }

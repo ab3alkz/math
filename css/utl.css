@@ -89,3 +89,20 @@
     background: url("../img/brace_l.png") no-repeat;
     background-size:contain ;
 }
+
+.math-cramer-border {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    margin-left: 10px;
+}
+
+.math-cramer-right,.math-cramer-left {
+     text-align: right;
+     padding-left: 5px;
+    padding-right: 5px;
+    float: left;
+}
+
+.math-cramer-right {
+    margin-left: 15px;
+}

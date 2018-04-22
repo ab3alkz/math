@@ -68,8 +68,12 @@ function getNbsp() {
     return '&nbsp;'
 }
 
+function getHtmlTab() {
+    return getTab();
+}
+
 function getTab() {
-    return getHtmlMain('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;');
+    return '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;';
 }
 
 function getFrame(val) {
