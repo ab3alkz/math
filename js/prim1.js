@@ -133,5 +133,5 @@ function getCramer(key) {
                 , "cramer-border math-inner")
         );
 
-    return res;
+    return res; ё
 }

@@ -17,3 +17,96 @@
     font-size: 17px;
     padding-bottom: 10px;
 }
+
+.statistic {
+    display: inline-block;
+    border: 2px solid silver;
+    padding: 7px 12px;
+    border-radius: 2px;
+}
+
+table.statistic tr th {
+    padding: 5px;
+}
+
+table.tests {
+    width: 100%;
+}
+
+table.tests tr th {
+    padding: 3px 0;
+    border-bottom: 1px solid silver;
+}
+
+.infosave {
+    font-size: 10px;
+    color: red;
+}
+
+.test-wrapper {
+    padding: 15px;
+    border-radius: 20px;
+    border: 2px solid #157FCC;
+    min-height: 450px;
+}
+
+.answ {
+    padding: 25px;
+    border-radius: 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    border: 1px solid #157FCC;
+    transition: 1s;
+}
+
+.progress-wrap {
+    height: 20px;
+    background-color: #555;
+    border-radius: 5px;
+}
+
+#progress {
+    background-color: lime;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    transition: .1s;
+}
+
+.min130 {
+    min-width: 130px;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+table.editquestion input {
+    width: 100%;
+}
+
+.bbsilver {
+    border-bottom: 1px solid silver;
+    padding: 5px;
+}
+
+.register {
+    margin-bottom: 8px;
+}
+
+.register span {
+    width: 180px;
+    display: inline-block;
+}
+
+.register input {
+    width: 250px;
+}
+
+.like-btn:hover {
+    text-decoration: none;
+    opacity: .7;
+}
+
+.like-btn {
+    text-decoration: none;
+    font-size: 17px;
+}
