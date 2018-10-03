@@ -121,7 +121,7 @@
 				longname : 'XHTML Xtras Plugin',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/xhtmlxtras',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/xhtmlxtras',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		}

@@ -140,7 +140,7 @@
 				longname : 'Fullscreen',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/fullscreen',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/fullscreen',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		}

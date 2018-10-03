@@ -73,7 +73,7 @@
 				longname : 'Example plugin',
 				author : 'Some author',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/example',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/example',
 				version : "1.0"
 			};
 		}

@@ -41,7 +41,7 @@
 				longname : 'Fullpage',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/fullpage',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/fullpage',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		},

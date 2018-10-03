@@ -14,16 +14,16 @@
 
                 <BR/>
 
-                <p>1 коэфицент: <input type="number" id="n1" value="2"></p>
-                <p>2 коэфицент: <input type="number" id="n2" value="-3"></p>
-                <br/><br/>
+                <p>1 коэфицент: <input type="number" id="n1" value=""></p>
+                <p>2 коэфицент: <input type="number" id="n2" value=""></p>
+                <br/><br/><!--
                 <p>функция: <input type="text" id="n3"></p>
-                <button onclick="calcPrim1()">Есепте</button>
+                <button onclick="calcPrim1()">Есепте</button>-->
 
-                <button> Есептелу жолы</button>
+                <button  onclick="calcPrim1()"> Есептелу жолы</button>
 
                 <hr>
-                <p id="out">Sheshimi</p>
+                <p id="out"></p>
                 <br>
             </div>
 

@@ -143,7 +143,7 @@
 				longname : 'Advanced lists',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/advlist',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/advlist',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		}

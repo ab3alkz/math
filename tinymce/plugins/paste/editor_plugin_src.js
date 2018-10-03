@@ -289,7 +289,7 @@
 				longname : 'Paste text/word',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/paste',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/paste',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		},

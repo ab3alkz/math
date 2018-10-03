@@ -50,7 +50,7 @@
 				longname : 'Layer',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/layer',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/layer',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		},

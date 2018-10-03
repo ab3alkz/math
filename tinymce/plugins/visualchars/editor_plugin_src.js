@@ -34,7 +34,7 @@
 				longname : 'Visual characters',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/visualchars',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/visualchars',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		},

@@ -129,7 +129,7 @@ function getFraction(top, bottom) {
 }
 
 function mathRound(num) {
-    return Math.round(num * 10) / 10;
+    return Math.round(num * 100) / 100;
 }
 
 function getHtmlBraceLeft(val, braceTxt) {

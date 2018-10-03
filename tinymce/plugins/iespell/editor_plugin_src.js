@@ -43,7 +43,7 @@
 				longname : 'IESpell (IE Only)',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/iespell',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/iespell',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		}

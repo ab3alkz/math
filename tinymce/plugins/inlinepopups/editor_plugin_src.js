@@ -25,7 +25,7 @@
 				longname : 'InlinePopups',
 				author : 'Moxiecode Systems AB',
 				authorurl : 'http://tinymce.moxiecode.com',
-				infourl : 'http://wiki.moxiecode.com/index1.php/TinyMCE:Plugins/inlinepopups',
+				infourl : 'http://wiki.moxiecode.com/math.php/TinyMCE:Plugins/inlinepopups',
 				version : tinymce.majorVersion + "." + tinymce.minorVersion
 			};
 		}
