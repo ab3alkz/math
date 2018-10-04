@@ -58,7 +58,7 @@
                         $area = $_POST['area'];
                         $link = translit($name);
                     if (isset($name) and isset($area)) {
-                        $r = mysql_query("insert into lecture (name, txt, id_txt, dat, cuser) values ('$name', '$area', '$link', sysdate(), '$cuser')");
+                        $r = mysql_query("insert into lecture (name, txt, id_txt, dat, cuser) values ('$name', '$area', '$link', sysdate(), '$cuser')")or die("Invalid query: " . mysql_error());
                         $result = mysql_query("SELECT * FROM lecture where id_txt='$link'", $db);
                         $myrow = mysql_fetch_array($result);
                     if ($myrow == true) {
@@ -107,7 +107,7 @@
                         $name = $_POST['name'];
                         $area = $_POST['area'];
                         $link = translit($name);
-                        $r = mysql_query("UPDATE lecture SET name = '$name', txt = '$area', id_txt = '$link' WHERE id = '$id'");
+                        $r = mysql_query("UPDATE lecture SET name = '$name', txt = '$area', id_txt = '$link' WHERE id = '$id'")or die("Invalid query: " . mysql_error());
 
                     }
                     }
