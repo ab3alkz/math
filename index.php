@@ -119,7 +119,7 @@
                     if ($action != "delete" && $action != "editor") {
                         mysql_query("insert into stat(lecture, cuser, dat) VALUES ('$id', '$cuser', sysdate() )", $db) or die("Invalid query: " . mysql_error());
                     }
-                    $result = mysql_query("SELECT l.*, (select COUNT(1) FROM questions q WHERE q.test = l.id) questions FROM lecture l where id='$id'", $db);
+                    $result = mysql_query("SELECT l.*, (select COUNT(1) FROM questions q WHERE q.test = l.id) questions FROM lecture l where id='$id'", $db)or die("Invalid query: " . mysql_error());
                     $myrow = mysql_fetch_array($result);
                     if ($myrow == true) {
                     do {
