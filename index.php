@@ -58,6 +58,8 @@
                         $area = $_POST['area'];
                         $link = translit($name);
                     if (isset($name) and isset($area)) {
+                            $area = str_replace("'", "\"", $area);
+
                         $r = mysql_query("insert into lecture (name, txt, id_txt, dat, cuser) values ('$name', '$area', '$link', sysdate(), '$cuser')")or die("Invalid query: " . mysql_error());
                         $result = mysql_query("SELECT * FROM lecture where id_txt='$link'", $db);
                         $myrow = mysql_fetch_array($result);
@@ -107,6 +109,8 @@
                         $name = $_POST['name'];
                         $area = $_POST['area'];
                         $link = translit($name);
+                        
+                            $area = str_replace("'", "\"", $area);
                         $r = mysql_query("UPDATE lecture SET name = '$name', txt = '$area', id_txt = '$link' WHERE id = '$id'")or die("Invalid query: " . mysql_error());
 
                     }
