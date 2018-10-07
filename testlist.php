@@ -16,10 +16,18 @@
                 LEFT OUTER join testresult t ON (t.test = l.id) where l.test is not null group by l.id, l.test,  l.id_txt ", $db);
     $myrow = mysql_fetch_array($result);
     if ($myrow == true) {
+        $idx = 0;
+
         do {
+            $idx++;
+            $trBg = '';
+            if (bcmod($idx, 2) == 1) {
+                $trBg = " style= 'background: #f3f4f8'";
+            }
+
             ?>
 
-            <tr>
+            <tr <?php echo $trBg ?> >
                 <th>
                     <?php
                     if ($myrow['result_cnt'] > 0) {

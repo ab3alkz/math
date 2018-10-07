@@ -155,6 +155,9 @@
                         <a class='btn btn-primary'
                            href="?action=edittest&lecture=<?php echo $lecture; ?>&id=<?php echo $id; ?>">
                             <i class="fa fa-plus"></i>&nbsp;&nbsp;<?php if ( $myrow['test']) {echo "Сынақты өзгерту";} else {echo "Сынақ қосу";} ?></a>
+                        <a class='btn btn-info'
+                           href="?action=getresult&lecture=<?php echo $lecture; ?>&id=<?php echo $id; ?>">
+                            <i class="fa fa-info"></i>&nbsp;&nbsp;Сынақ натижелері</a>
                     <br><br>
                         <?php
                     }

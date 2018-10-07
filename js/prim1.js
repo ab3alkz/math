@@ -32,10 +32,12 @@ function getFormula(k1, k2) {
 }
 
 $(document).ready(function () {
-    document.getElementById('mathFormula').innerHTML = getFormula()
-        + getFrame(getHtmlMain("y(0) = 0 "))
-        + getFrame(getHtmlMain("y'(0) = 0 "));
-    // calcPrim1();
+    if (document.getElementById('mathFormula')) {
+        document.getElementById('mathFormula').innerHTML = getFormula()
+            + getFrame(getHtmlMain("y(0) = 0 "))
+            + getFrame(getHtmlMain("y'(0) = 0 "));
+        // calcPrim1();
+    }
 });
 
 function startCalc(k1, k2, key) {
@@ -75,14 +77,14 @@ function getDiscriminant(a, b, c, key) {
 
     resultObj[key].K1 = mathRound((-2 - Math.sqrt(resultObj[key].D)) / 2);
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
-    );
+            getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
+        );
 
 
     resultObj[key].K2 = mathRound((-2 + Math.sqrt(resultObj[key].D)) / 2);
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
-    );
+            getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
+        );
 
     return res;
 }
@@ -113,27 +115,27 @@ function commonDecision(k1, k2, key) {
 function getCramer(key, Y_idx, k1, k2, y, y_) {
 
     var res = getBR(2) + "<hr>" + getHtmlBraceLeft(
-        getFrame(
-            getHtmlIdx('y', Y_idx) + getHtmlMain("(0) = ")
-            + getHtmlIdx('c', 1)
-            + getHtmlIdx(' + c', 2) + getHtmlMain(' = ' + y)
-        )
-        + getFrame(
-        getHtmlIdx("y'", Y_idx) + getHtmlMain("(0) = ")
-        + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1)
-        + getHtmlMain(' + ')
-        + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = ' + y_)
-        )
-    );
+            getFrame(
+                getHtmlIdx('y', Y_idx) + getHtmlMain("(0) = ")
+                + getHtmlIdx('c', 1)
+                + getHtmlIdx(' + c', 2) + getHtmlMain(' = ' + y)
+            )
+            + getFrame(
+                getHtmlIdx("y'", Y_idx) + getHtmlMain("(0) = ")
+                + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1)
+                + getHtmlMain(' + ')
+                + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = ' + y_)
+            )
+        );
 
     var delta = mathRound(1 * k2 - k1 * 1);
     res += getBR(1) +
         getFrame(
             getHtmlMain("Δ = ")
             + getDiv(
-            getDiv(1 + getBR() + k1, 'cramer-left')
-            + getDiv(1 + getBR() + k2, 'cramer-right')
-            , "cramer-border math-inner")
+                getDiv(1 + getBR() + k1, 'cramer-left')
+                + getDiv(1 + getBR() + k2, 'cramer-right')
+                , "cramer-border math-inner")
 
             + getHtmlMain(getNbsp() + " = 1 * " + k2 + " - " + getMathMultiplication(k1) + " * 1 = ")
             + getHtmlMain(getNbsp() + delta)
@@ -144,8 +146,8 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         getFrame(
             getHtmlIdx("Δ", 1) + getHtmlMain(" = ")
             + getDiv(
-            getDiv(y + getBR() + y_, 'cramer-left')
-            + getDiv(1 + getBR() + 1, 'cramer-right'), "cramer-border math-inner")
+                getDiv(y + getBR() + y_, 'cramer-left')
+                + getDiv(1 + getBR() + 1, 'cramer-right'), "cramer-border math-inner")
             + getHtmlMain(getNbsp() + " = " + delta_1)
         );
 
@@ -154,8 +156,8 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         getFrame(
             getHtmlIdx("Δ", 2) + getHtmlMain(" = ")
             + getDiv(
-            getDiv(k2 + getBR() + k1, 'cramer-left')
-            + getDiv(y + getBR() + y_, 'cramer-right'), "cramer-border math-inner")
+                getDiv(k2 + getBR() + k1, 'cramer-left')
+                + getDiv(y + getBR() + y_, 'cramer-right'), "cramer-border math-inner")
             + getHtmlMain(getNbsp() + " = " + delta_2)
         );
 

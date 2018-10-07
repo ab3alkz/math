@@ -67,11 +67,11 @@ function myTest($action, $id, $role, $lecture, $db)
                     $myrow = mysql_fetch_array($result);
                     echo "<table width='100%'>
                             <tr>
-                                <th align='left' width='170' class='bbsilver'>Дата сдачи</th>
-                                <th class='bbsilver' align='left'>Фамилия</th>
-                                <th  class='bbsilver' align='left'>Имя</th>
-                                <th class='bbsilver' align='left'>Отчество</th>
-                                <th class='bbsilver' align='left' width='100'>Результат</th>
+                                <th align='left' width='170' class='bbsilver' style='text-align: center'>Уақыт</th>
+                                <th class='bbsilver' align='left'style='border-left: 1px solid silver;text-align: center'>Тегі</th>
+                                <th  class='bbsilver' align='left'style='border-left: 1px solid silver;text-align: center'>Аты</th>
+                                <th class='bbsilver' align='left'style='border-left: 1px solid silver;text-align: center'>Әкесінің аты</th>
+                                <th class='bbsilver' align='left'style='border-left: 1px solid silver;text-align: center' width='100'>Нәтиже</th>
                             </tr>";
                     $idx = 1;
                     do {
