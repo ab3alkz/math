@@ -9,7 +9,12 @@ if (isset($_POST['comment'])) {
 
 }
 
-$result = mysql_query("SELECT c.*, u.lname,u.fname, u.mname FROM comments c, users u where c.lection='$id' and u.id = c.cuser order by dat", $db);
+$result = mysql_query("SELECT c.id,c.cuser, c.dat,c.comment,c.lection, u.lname,u.fname, u.mname, 
+sum(l.like1) like_on,
+sum( case when l.like1 = 0 then 1 else 0 end) like_off
+FROM users u, comments c left OUTER join likes l on (l.comment = c.id) where c.lection='$id' and u.id = c.cuser 
+group by c.id,c.cuser, c.dat,c.comment,c.lection, u.lname,u.fname, u.mname
+order by c.dat", $db);
 $myrow = mysql_fetch_array($result);
 $idx = 0;
 if ($myrow == true) {
@@ -31,12 +36,16 @@ if ($myrow == true) {
                 <span style="color: navy;"><?php echo $myrow['dat']; ?></span>
             </span>
             <span>&nbsp;
-                  <a href="" class="fa fa-thumbs-up like-btn" style="color: #00ae5a"></a>
-                <span style="color: #00ae5a;">5</span>
+                  <a onclick="like(1, <?php echo $myrow['id']; ?>)" class="fa fa-thumbs-up like-btn"
+                     style="color: #00ae5a;cursor: pointer"></a>
+                <span style="color: #00ae5a;"
+                      id="likeon<?php echo $myrow['id']; ?>"><?php echo $myrow['like_on']; ?></span>
             </span>
             <span>&nbsp;
-                  <a href="" class="fa fa-thumbs-down like-btn" style="color: orange"></a>
-                <span style="color: orange;">1</span>
+                  <a onclick="like(0, <?php echo $myrow['id']; ?>)" class="fa fa-thumbs-down like-btn"
+                     style="color: orange;cursor: pointer"></a>
+                <span style="color: orange;"
+                      id="likeoff<?php echo $myrow['id']; ?>"><?php echo $myrow['like_off']; ?></span>
             </span>
         </div>
         <?php
@@ -58,13 +67,14 @@ if ($cuser) {
     <?php
 } else {
     ?>
-        <div class="word-wrapper areaComment" style="padding-top: 10px">
+    <div class="word-wrapper areaComment" style="padding-top: 10px">
 
         <textarea style="width: 100%; height: 50px" class="mceEditor " maxlength="300" minlength="5" id="area"
                   name="comment"></textarea>
-            <input type="button" onclick="alert('Комментарии қалдыру үшін тіркелу керек!')" value="Сақтау" style="margin-top: 10px"
-                   class='btn btn-success'>
-        </div>
+        <input type="button" onclick="alert('Комментарии қалдыру үшін тіркелу керек!')" value="Сақтау"
+               style="margin-top: 10px"
+               class='btn btn-success'>
+    </div>
 
     <?php
 }
@@ -83,3 +93,42 @@ if ($cuser) {
         display: none;
     }
 </style>
+
+<script>
+    xLikeCh = 0;
+    function like(xLike, xCommentId) {
+        if (xLikeCh == 1) {
+            return;
+        }
+        xLikeCh = 1;
+        var cuser = <?php if ($cuser == null or $cuser == '') {
+            echo '""';
+        } else {
+            echo $cuser;
+        } ?>;
+        if (!isNullOrEmpty(cuser)) {
+            $.ajax({
+                url: "like.php",
+                method: "post",
+                data: {like: xLike, comment: xCommentId, cuser: cuser, lection: <?php echo $id;?>},
+                context: document.body,
+                success: function (r) {
+
+                    xLikeCh = 0;
+                    if (!isNullOrEmpty(r)) {
+                        if (xLike == 1) {
+                            $("#likeon" + xCommentId).html(r);
+                        } else {
+                            $("#likeoff" + xCommentId).html(r);
+                        }
+                    }
+                }
+            }).done(function () {
+                $(this).addClass("done");
+            });
+        }
+        else {
+            alert(" Cіз сайтқа тіркелмедіңіз!")
+        }
+    }
+</script>
