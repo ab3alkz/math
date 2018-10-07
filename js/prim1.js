@@ -27,7 +27,7 @@ function getFormula(k1, k2) {
         getHtmlMain("y''(x)")
         + isCondition(!isNullOrEmpty(k1), getHtmlPlus(k1), getHtmlIdx(' + k', 1)) + getHtmlMain("y'")
         + isCondition(!isNullOrEmpty(k2), getHtmlPlus(k2), getHtmlIdx(' + k', 2))
-        + getHtmlMain("y(x) = f(x)")
+        + getHtmlMain("y(x) = 0")
     );
 }
 
