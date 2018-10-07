@@ -101,7 +101,6 @@
 
             <div class="pull-right hidden-xs top-menu">
                 <a href="index.php" class="btn btn-success"><i class="fa fa-book"></i>&nbsp;Дәрістер</a>
-                <a href="math.php" class="btn btn-success"><i class="fa fa-calculator"></i>&nbsp;Есеп шығару</a>
                 <a href="index.php?action=testlist" class="btn btn-success"><i class="fa fa-trophy"></i>Сынақтар</a>
                 <!--<a href="/freelancers" class="btn btn-success"><i class="fa fa-users"></i>&nbsp;Фрилансеры</a>
                 <a href="/showcase" class="btn btn-success"><i
@@ -110,8 +109,6 @@
             <div class="pull-right visible-xs top-menu">
                 <a href="index.php" class="btn btn-success" title=""
                    data-original-title="Дәрістер"><i class="fa fa-book"></i></a>
-                <a href="math.php" class="btn btn-success" title=""
-                   data-original-title="Есеп шығару"><i class="fa fa-calculator"></i></a>
                 <a href="index.php?action=testlist" class="btn btn-success" title=""
                    data-original-title="Сынақтар"><i class="fa fa-trophy"></i></a>
                 <!--<a href="/freelancers" class="btn btn-success" title=""

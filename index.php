@@ -178,6 +178,10 @@
 
                         <?php
                     }
+                    ?>
+
+                        <a href="math.php" class="btn btn-success"><i class="fa fa-calculator"></i>&nbsp;Есеп шығару</a>
+                <?php
 
                     }
                     } while ($myrow = mysql_fetch_array($result));
