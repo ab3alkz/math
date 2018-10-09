@@ -4,11 +4,19 @@
 
 var resultObj = {};
 
-function calcPrim1() {
+function startPrim1(key) {
+    if (document.getElementById('mathFormula')) {
+        document.getElementById('mathFormula').innerHTML = getFormula()
+            + getFrame(getHtmlMain("y(0) = 0 "))
+            + getFrame(getHtmlMain("y'(0) = 0 "));
+        document.getElementById('out').innerHTML = calcPrim1(key);
+    }
+}
+
+function calcPrim1(key) {
     var k1 = document.getElementById('n1').value;
     var k2 = document.getElementById('n2').value;
 
-    var key = 'prim1'
     resultObj[key] = {};
 
     if (!$.isNumeric(k1)) {
@@ -19,7 +27,7 @@ function calcPrim1() {
         alert("2 коэфицент: '" + k2 + "' сан болуы керек");
         return;
     }
-    document.getElementById('out').innerHTML = startCalc(k1, k2, key);
+    return startCalc(k1, k2, key);
 }
 
 function getFormula(k1, k2) {
@@ -30,15 +38,6 @@ function getFormula(k1, k2) {
         + getHtmlMain("y(x) = 0")
     );
 }
-
-$(document).ready(function () {
-    if (document.getElementById('mathFormula')) {
-        document.getElementById('mathFormula').innerHTML = getFormula()
-            + getFrame(getHtmlMain("y(0) = 0 "))
-            + getFrame(getHtmlMain("y'(0) = 0 "));
-        // calcPrim1();
-    }
-});
 
 function startCalc(k1, k2, key) {
 
@@ -162,6 +161,7 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         );
 
     var C1 = mathRound(delta_1 / delta);
+    resultObj[key]["kramer" + Y_idx + 'C1'] = C1;
     res += getBR(2) +
         getFrame(
             getHtmlIdx("C", 1) + getHtmlMain(" = ")
@@ -170,6 +170,8 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         );
 
     var C2 = mathRound(delta_2 / delta);
+    resultObj[key]["kramer" + Y_idx + 'C2'] = C2;
+
     res += getBR(1) +
         getFrame(
             getHtmlIdx("C", 2) + getHtmlMain(" = ")
@@ -177,19 +179,30 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
             + getHtmlMain(getNbsp() + " = " + C2)
         );
 
+    resultObj[key]["kramerY" + Y_idx] = getFrame(getKramerY(C1, C2, 't', k1, k2));
     res += getBR(2) +
-        getFrame(
-            getHtmlIdx("y", Y_idx) + getHtmlMain("(x) = " + C1) + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + "x")
-            + getHtmlMain(" + " + getNbsp())
-            + getHtmlMain(C2) + getHtmlSqr("e", isCondition(k2 == 1, '', k1) + "x")
-        );
+        getFrame(getHtmlIdx('y', Y_idx)
+            + getHtmlMain("(x) = ") + getKramerY(C1, C2, 'x', k1, k2));
 
-    res += getBR(1) +
-        getFrame(
-            getHtmlIdx("y'", Y_idx) + getHtmlMain("(x) = " + getMathMultiplication(mathRound(k1 * C1))) + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + "x")
-            + getHtmlMain(" + " + getNbsp())
-            + getHtmlMain(getMathMultiplication(mathRound(k2 * C2))) + getHtmlSqr("e", isCondition(k2 == 1, '', k1) + "x")
-        );
+    resultObj[key]["kramerY'" + Y_idx] = getFrame(getKramerY_(C1, C2, 't', k1, k2));
+    res += getBR(2) +
+        getFrame(getHtmlIdx("y'", Y_idx)
+            + getHtmlMain("(x) = ") + getKramerY_(C1, C2, 'x', k1, k2));
 
     return res;
+}
+
+function getKramerY(C1, C2, x, k1, k2) {
+    return getHtmlMain(C1) + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + x)
+        + getHtmlMain(" + " + getNbsp())
+        + getHtmlMain(C2) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
+
+}
+
+function getKramerY_(C1, C2, x, k1, k2) {
+    return getHtmlMain(getMathMultiplication(mathRound(k1 * C1)))
+        + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + x)
+        + getHtmlMain(" + " + getNbsp())
+        + getHtmlMain(getMathMultiplication(mathRound(k2 * C2))) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
+
 }

@@ -14,13 +14,13 @@
 
                 <BR/>
 
-                <p>1 коэфицент: <input type="number" id="n1" value=""></p>
-                <p>2 коэфицент: <input type="number" id="n2" value=""></p>
+                <p>1 коэфицент: <input type="number" id="n1" value="2"></p>
+                <p>2 коэфицент: <input type="number" id="n2" value="-3"></p>
                 <br/><br/><!--
                 <p>функция: <input type="text" id="n3"></p>
                 <button onclick="calcPrim1()">Есепте</button>-->
 
-                <button  onclick="calcPrim1()"> Есептелу жолы</button>
+                <button onclick="calcPrim2()"> Есептелу жолы</button>
 
                 <hr>
                 <p id="out"></p>
@@ -38,6 +38,6 @@
 </div>
 <div id="mobile-test" class="visible-xs"></div>
 <br><br>
- <?php include "footer.php"?>
+<?php include "footer.php" ?>
 </body>
 </html>
