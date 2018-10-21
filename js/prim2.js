@@ -29,58 +29,182 @@ function calcPrim2(key) {
 
 function getCramerF2(key, Y_idx, k1, k2, y, y_) {
     var res = getBR(2) + "<hr>";
+    var ids = [11, 12, 21, 22, 31, 32, 41, 42];
+    var idsl = [11, 12, 21, 22];
+    var idsr = [31, 32, 41, 42];
 
-    var cc11 = (resultObj[key]["kramer1C1"] * resultObj[key].K1) * resultObj[key]["kramer2C1"];
-    var cc12 = (resultObj[key]["kramer1C1"] * resultObj[key].K1) * resultObj[key]["kramer2C2"];
+    var arr = {};
+    for (var i in ids) {
+        arr['c' + ids[i]] = {id: ids[i]};
+    }
 
-    var cc21 = (resultObj[key]["kramer1C2"] * resultObj[key].K2) * resultObj[key]["kramer2C1"];
-    var cc22 = (resultObj[key]["kramer1C2"] * resultObj[key].K2) * resultObj[key]["kramer2C2"];
+    arr['c11'].v = (resultObj[key]["kramer1C1"] * resultObj[key].K1) * resultObj[key]["kramer2C1"];
+    arr['c12'].v = (resultObj[key]["kramer1C1"] * resultObj[key].K1) * resultObj[key]["kramer2C2"];
 
-    var cc31 = (resultObj[key]["kramer2C1"] * resultObj[key].K1) * resultObj[key]["kramer1C1"];
-    var cc32 = (resultObj[key]["kramer2C1"] * resultObj[key].K1) * resultObj[key]["kramer1C2"];
+    arr['c21'].v = (resultObj[key]["kramer1C2"] * resultObj[key].K2) * resultObj[key]["kramer2C1"];
+    arr['c22'].v = (resultObj[key]["kramer1C2"] * resultObj[key].K2) * resultObj[key]["kramer2C2"];
 
-    var cc41 = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C1"];
-    var cc42 = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C2"];
+    arr['c31'].v = (resultObj[key]["kramer2C1"] * resultObj[key].K1) * resultObj[key]["kramer1C1"];
+    arr['c32'].v = (resultObj[key]["kramer2C1"] * resultObj[key].K1) * resultObj[key]["kramer1C2"];
 
-    var ccT = ((cc11 + cc12 + cc21 + cc22) - (cc31 + cc32 + cc41 + cc42));
+    arr['c41'].v = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C1"];
+    arr['c42'].v = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C2"];
+
+    var arrT = ((arr['c11'].v + arr['c12'].v + arr['c21'].v + arr['c22'].v) - (arr['c31'].v + arr['c32'].v + arr['c41'].v + arr['c42'].v));
 
 
-    var sq11 = resultObj[key].K1 + resultObj[key].K1;
-    var sq12 = resultObj[key].K1 + resultObj[key].K2;
+    arr['c11'].q = resultObj[key].K1 + resultObj[key].K1;
+    arr['c12'].q = resultObj[key].K1 + resultObj[key].K2;
 
-    var sq21 = resultObj[key].K2 + resultObj[key].K1;
-    var sq22 = resultObj[key].K2 + resultObj[key].K2;
+    arr['c21'].q = resultObj[key].K2 + resultObj[key].K1;
+    arr['c22'].q = resultObj[key].K2 + resultObj[key].K2;
 
-    var sq31 = resultObj[key].K1 + resultObj[key].K1;
-    var sq32 = resultObj[key].K1 + resultObj[key].K2;
+    arr['c31'].q = resultObj[key].K1 + resultObj[key].K1;
+    arr['c32'].q = resultObj[key].K1 + resultObj[key].K2;
 
-    var sq41 = resultObj[key].K2 + resultObj[key].K1;
-    var sq42 = resultObj[key].K2 + resultObj[key].K2;
+    arr['c41'].q = resultObj[key].K2 + resultObj[key].K1;
+    arr['c42'].q = resultObj[key].K2 + resultObj[key].K2;
+
+    console.log(arr)
+
+    for (var i in idsl) {
+        for (var j in idsr) {
+            var l = arr['c' + idsl[i]];
+            var r = arr['c' + idsr[j]];
+            if (l != null && r != null && equalSqrObjects(l, r)) {
+                arr = removeSqrObjectInArr(ids, arr, idsl[i]);
+                ids = removeIdsObj(ids, idsl[i]);
+                arr = removeSqrObjectInArr(ids, arr, idsr[j]);
+                ids = removeIdsObj(ids, idsr[j]);
+                continue;
+            }
+        }
+    }
+
+    var rrl = plusSqrObjects(arr, idsl);
+    var rrr = plusSqrObjects(arr, idsr);
+
+
+    var ss = minusSqrObj(rrl, rrr);
+    var res_inner = '';
+    var itr = 0;
+    for (var i in ss) {
+        if (itr > 0) {
+            res_inner += '+';
+        }
+        ss[i].v = mathRound(ss[i].v);
+        res_inner += getHtmlMain(getNbsp() +
+            getHtmlSqr(
+                isCondition(ss[i].v < 0, '-', '')
+                + isCondition(Math.abs(ss[i].v) == 1, '', Math.abs(ss[i].v)) + "e",
+
+                ss[i].q + 't'
+            )
+            + getNbsp())
+    }
+
 
     res += getBR(1) +
-        getFrame(getHtmlMain("Δ(t) = ")
+        getFrame(getHtmlMain(getBR() + "Δ(t) = ")
             + getDiv(
                 getDiv(resultObj[key]["kramerY'1"] + getBR() + resultObj[key]["kramerY1"], 'cramer-left')
                 + getDiv(resultObj[key]["kramerY'2"] + getBR() + resultObj[key]["kramerY2"], 'cramer-right'), "cramer-border math-inner")
-            + getHtmlMain(getNbsp() + " = ("
-                + cc11 + '^' + sq11
-                + ' + '
-                + cc12 + '^' + sq12
-                + ' + '
-                + cc21 + '^' + sq21
-                + ' + '
-                + cc22 + '^' + sq22
-                + ') - ('
-                + cc31
-                + ' + '
-                + cc32
-                + ' + '
-                + cc41
-                + ' + '
-                + cc42 + ') = ' + ccT
-            )
+            + getHtmlMain(getBR() + getNbsp() + " =  ") + res_inner
         )
     ;
 
+
     return res;
+}
+
+function minusSqrObj(rrl, rrr) {
+    var res = [];
+    for (var i in rrl) {
+        for (var j in rrr) {
+            if (rrl[i].q == rrr[j].q) {
+                var rr = mathRound(rrl[i].r - rrr[j].r);
+                if (rr != 0) {
+                    var obj = {v: rr, q: rrl[j].q}
+                    res.push(obj);
+                }
+            }
+        }
+    }
+    return res;
+}
+
+
+function plusSqrObjects(arr, ids) {
+    var res = [];
+    var ex;
+    var rr;
+    for (var i in ids) {
+        rr = null;
+        ex = false;
+        var obj = arr['c' + ids[i]];
+        if (obj != null) {
+            for (var j in res) {
+                var r = res[j];
+                if (r.q == obj.q) {
+                    ex = true;
+                    rr = r;
+                    continue;
+                }
+            }
+            if (ex) {
+                res = removeObjByid(res, rr.id);
+                rr.r = nvl(rr.r, 0) + obj.v;
+                res.push(rr);
+            } else {
+                obj.r = obj.v;
+                res.push(obj);
+            }
+        }
+    }
+    return res;
+}
+
+function equalSqrObjects(obj1, obj2) {
+    if (obj1 != null && obj2 != null && obj1.v == obj2.v && obj1.q == obj2.q && obj1.id != obj2.id) {
+        return true;
+    }
+    return false;
+}
+
+function removeSqrObjectInArr(ids, arr, id) {
+    var res1 = {}
+    for (var i in ids) {
+        var id_ = ids[i];
+        if (id_ != null) {
+            var obj = arr['c' + id_];
+            if (obj != null && obj.id != id) {
+                res1['c' + id_] = obj;
+            }
+        }
+    }
+
+    return res1;
+}
+
+
+function removeIdsObj(ids, id) {
+    var res2 = []
+    for (var i in ids) {
+        if (ids[i] != id) {
+            res2.push(ids[i]);
+        }
+    }
+
+    return res2;
+}
+
+function removeObjByid(list, id) {
+    var res2 = []
+    for (var i in list) {
+        if (list[i].id != id) {
+            res2.push(list[i]);
+        }
+    }
+
+    return res2;
 }

@@ -1,8 +1,8 @@
 /**
  * Created by a.amanzhol on 09.04.2018.
  */
-function getHtmlSqr(x, xSqrt) {
-    return getDiv(getDiv(x, 'main') + getDiv(xSqrt, 'sqr'), 'inner');
+function getHtmlSqr(x, xSqr) {
+    return getDiv(getDiv(x, 'main') + getDiv(xSqr, 'sqr'), 'inner');
 
 }
 
