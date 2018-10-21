@@ -25,6 +25,9 @@
                 <hr>
                 <p id="out"></p>
                 <br>
+                <div class="clearfix"></div>
+                <br><br>
+                <div class="clearfix"></div>
             </div>
 
 

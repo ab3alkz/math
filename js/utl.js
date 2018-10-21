@@ -133,9 +133,13 @@ function mathRound(num) {
 }
 
 function getHtmlBraceLeft(val, braceTxt) {
-    return getDiv(nvl(braceTxt,''), 'brace-left') + getDiv(val, "brace") + getClearfix()
+    return getDiv(nvl(braceTxt, ''), 'brace-left') + getDiv(val, "brace") + getClearfix()
 }
 
 function getHtmlBraceRight(val, braceTxt) {
     return getDiv(val, "brace") + getDiv(braceTxt, 'brace-rigth') + getClearfix()
+}
+
+function getHtmlBrackets(v) {
+    return getDiv(getDiv(getDiv(v), 'main math-brackets'), 'inner')
 }

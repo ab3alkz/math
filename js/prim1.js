@@ -180,11 +180,13 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         );
 
     resultObj[key]["kramerY" + Y_idx] = getFrame(getKramerY(C1, C2, 't', k1, k2));
+    resultObj[key]["kramerY" + Y_idx + 'x'] = getFrame(getKramerY(C1, C2, 'x', k1, k2));
     res += getBR(2) +
         getFrame(getHtmlIdx('y', Y_idx)
             + getHtmlMain("(x) = ") + getKramerY(C1, C2, 'x', k1, k2));
 
     resultObj[key]["kramerY'" + Y_idx] = getFrame(getKramerY_(C1, C2, 't', k1, k2));
+    resultObj[key]["kramerY'" + Y_idx + 'x'] = getFrame(getKramerY_(C1, C2, 'x', k1, k2));
     res += getBR(2) +
         getFrame(getHtmlIdx("y'", Y_idx)
             + getHtmlMain("(x) = ") + getKramerY_(C1, C2, 'x', k1, k2));

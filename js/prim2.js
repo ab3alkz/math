@@ -112,7 +112,33 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
             + getHtmlMain(getBR() + getNbsp() + " =  ") + res_inner
         )
     ;
+    resultObj[key]['Δ(t)'] = ss[0];
 
+    res += getBR(6) +
+        getFrame(
+            getHtmlMain(getBR(2) + "k(x,t) = ")
+            + getHtmlMain(getBR() + getFraction(1, res_inner))
+            + getDiv(
+                getDiv(resultObj[key]["kramerY1x"] + getBR() + resultObj[key]["kramerY1"], 'cramer-left')
+                + getDiv(resultObj[key]["kramerY2x"] + getBR() + resultObj[key]["kramerY2"], 'cramer-right'), "cramer-border math-inner")
+            + getHtmlMain(getBR() + getNbsp() + " =  ")
+        );
+
+    var kxt = resultObj[key]['Δ(t)'];
+    kxt.q = 0 - kxt.q;
+    res += getBR(5) +
+        getFrame(
+            getHtmlMain(getNbsp() + " =  " + getNbsp())
+            + getHtmlSqr(
+                isCondition(kxt.v < 0, '-', '')
+                + isCondition(Math.abs(kxt.v) == 1, '', Math.abs(kxt.v)) + "e",
+                kxt.q + 't'
+            ) +
+            getHtmlBrackets(123456789)
+        )
+
+
+    ;
 
     return res;
 }
