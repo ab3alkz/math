@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title> Фундаменталдық математика</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/images/apple-icon-144x144.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta property="og:country-name" content="Kazakh">
+    <meta property="og:type" content="website">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/projects.rss">
+    <meta name="twitter:image:src" content="/static/images/logo/freelancehunt-ru@2x.png">
+    <meta property="og:image" content="/static/images/freelancehunt-header.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ESEPTE.KZ">
+    <link rel="stylesheet" href="css/css.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/utl.css" type="text/css" media="screen">
+    <link rel="stylesheet"
+          href="./css/bootstrap.min.css"
+          type="text/css" media="screen">
+    <link rel="stylesheet"
+          href="./css/vendor-all.5db340b3.css"
+          media="screen">
+    <link rel="stylesheet"
+          href="./css/freelancehunt-all.7c168467.css"
+          media="screen">
+
+    <style type="text/css"></style>
+    <script src="js/utl.js" defer></script>
+    <script src="js/prim1.js" defer></script>
+    <script src="js/prim2.js" defer></script>
+</head>
+<body data-ng-app="fhApp">
+<div id="top-nav">
+    <div class="container">
+        <div class="row" style="position: relative;">
+            <div class="col-md-5" style="padding-top: 5px">
+                <a href="index.php"
+                   class="hidden-xs hidden-sm img-responsive pull-left marker-no-tooltip logo-komekshi"
+                   id="header-logo">ESEPTE.KZ</a>
+
+                <a href="/"
+                   class="visible-xs visible-sm img-responsive pull-left marker-no-tooltip logo-komekshi"
+                   id="header-logo-sm ">ESEPTE.KZ</a>
+                <div class="clearfix"></div>
+                <span class="logo-komekshi-span">Фундаменталдық математика бағытындағы есептерді шешу</span>
+            </div>
+
+            <div id="top-ushki">
+                <div class="btn-group">
+                    <?php
+                    if (isset($cuser)) {
+                        ?>
+                    <a class="btn btn-default btn-sm" href="profile.php">
+                        <img src="./img/imediasun.png" width="15" height="15" class="vertical avatar img-rounded " style="margin-right: 3px"> <?php echo $username; ?>
+                    </a>
+                    <a class="btn btn-default btn-sm" href="?exit">
+                        <i class="fa fa-sign-out-alt"></i>
+                        <span>Шығу</span>
+                    </a>
+                    <?php
+                    } else {
+                        ?>
+                    <a class="btn btn-default btn-sm" href="?action=register">
+                        <i class="fa fa-plus"></i>
+                        <span>Тіркелу</span>
+                    </a>
+                    <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+                       href="/projects/skill/veb-programmirovanie/99.html#">
+                        <i class="fa fa-key"></i><span> Кіру</span>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <form method="post" action="" id="login-form">
+                            <input type="text" name="login" id="login" placeholder="Логин" class="form-control"
+                                   style="margin-bottom: 15px;" value="">
+                            <input type="password" name="password" id="password" class="form-control"
+                                   placeholder="Пароль" style="margin-bottom: 15px;">
+                            <!--   <input type="checkbox" name="remember-me" id="remember-me" value="1" title=""
+                                      checked="checked" style="margin-right: 10px;" class="pull-left"
+                                      data-original-title="Запомнить меня">
+                               <label for="remember-me"> Запомнить меня</label>-->
+                            <button class="btn btn-default btn-primary form-control" type="submit" id="dologin">Кіру
+                            </button>
+                        </form>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <div class="pull-right hidden-xs top-menu">
+                <a href="index.php" class="btn btn-success"><i class="fa fa-book"></i>&nbsp;Дәрістер</a>
+                <a href="index.php?action=testlist" class="btn btn-success"><i class="fa fa-trophy"></i>Сынақтар</a>
+                <!--<a href="/freelancers" class="btn btn-success"><i class="fa fa-users"></i>&nbsp;Фрилансеры</a>
+                <a href="/showcase" class="btn btn-success"><i
+                            class="fa fa-picture-o"></i><span class="hidden-sm">&nbsp;Работы</span></a>-->
+            </div>
+            <div class="pull-right visible-xs top-menu">
+                <a href="index.php" class="btn btn-success" title=""
+                   data-original-title="Дәрістер"><i class="fa fa-book"></i></a>
+                <a href="index.php?action=testlist" class="btn btn-success" title=""
+                   data-original-title="Сынақтар"><i class="fa fa-trophy"></i></a>
+                <!--<a href="/freelancers" class="btn btn-success" title=""
+                   data-original-title="Фрилансеры"><i class="fa fa-users"></i></a>
+                <a href="/showcase" class="btn btn-success" title=""
+                   data-original-title="Работы"><i class="fa fa-picture-o"></i></a>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="page">
+        <div style="text-align: left">
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-md-push-3">
+                <div id="projects-html" data-is-filter-active="1" data-page="1">
+                    <div id="mathFormula">
+                    </div>
+
+                </div>
+
+                <BR/>
+
+                <p>1 коэфицент: <input type="number" id="n1" value="2"></p>
+                <p>2 коэфицент: <input type="number" id="n2" value="-3"></p>
+                <br/><br/><!--
+                <p>функция: <input type="text" id="n3"></p>
+                <button onclick="calcPrim1()">Есепте</button>-->
+
+                <button onclick="calcPrim2()"> Есептелу жолы</button>
+
+                <hr>
+                <p id="out"></p>
+                <br>
+                <div class="clearfix"></div>
+                <br><br>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="col-md-3 col-md-pull-9">
+                <div class="well well-sm smaller">
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mobile-test" class="visible-xs"></div>
+<br><br>
+<footer>
+    <div id="footer-starter"></div>
+    <div class="container">
+        <div class="row" id="footer">
+            <div class="col-md-6 col-xs-12 clearfix">
+                <h4 style="color: inherit">Полезная информация</h4>
+                <ul class="clearfix">
+                    <li><a href="/register"><strong>Тіркелу</strong></a></li>
+                    <li><a href="/profile/lostpassword"><strong>Забыли пароль?</strong></a> 💁
+                    </li>
+                    <li><a href="https://feedback.ESEPTE.KZ/forums/3-baza-znanij" target="_blank">База
+                        знаний</a></li>
+                    <li><a href="https://feedback.ESEPTE.KZ/" target="_blank" rel="nofollow">Идеи и
+                        предложения</a></li>
+                    <li><a href="/service/rules">Правила сервиса</a></li>
+                    <li><a href="/service/privacy">Конфиденциальность</a></li>
+                    <li><a href="/service/press">Мы в прессе</a></li>
+                    <li><a href="/service/bonus" title=""
+                           data-original-title="Бонус программа — начните зарабатывать прямо сейчас!">Бонус
+                        программа</a></li>
+                    <li><a href="/statistics/rates" title=""
+                           data-original-title="Распределение цен на рынке фриланса на базе прайс-листов, предоставленных исполнителями">Статистика
+                        цен</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-6 col-xs-12 clearfix social-networks">
+                <h4 style="color: inherit">Оставайтесь на связи!</h4>
+                <a class="fa-stack fa-lg no-external-marker no-underline" href="https://twitter.com/flhinside"
+                   target="_blank" title="" rel="nofollow" data-original-title="Новости сервиса в Twitter">
+                    <img src="./img/twitter.svg"
+                         width="32" height="32" alt="Twitter">
+                </a>
+                &nbsp;
+                <a class="fa-stack fa-lg no-external-marker no-underline" href="https://www.facebook.com/freelancehunt"
+                   target="_blank" title="" rel="nofollow"
+                   data-original-title="Сообщество ESEPTE.KZ на Facebook">
+                    <img src="./img/facebook.svg"
+                         width="32" height="32" alt="Facebook">
+                </a>
+                &nbsp;
+                <a class="fa-stack fa-lg no-external-marker no-underline" href="https://plus.google.com/+Freelancehunt"
+                   target="_blank" title="" rel="nofollow" data-original-title="Группа Google+">
+                    <img src="./img/google-plus.svg"
+                         width="32" height="32" alt="Google+">
+                </a>
+                &nbsp;
+                <a class="fa-stack fa-lg no-external-marker no-underline" href="https://vk.com/freelancehuntcom"
+                   target="_blank" title="" rel="nofollow" data-original-title="Группа VKontakte">
+                    <img src="./img/vk.svg"
+                         width="32" height="32" alt="VKontakte">
+                </a>
+                <br><br>
+                <a class="fa-stack fa-lg no-external-marker no-underline"
+                   href="https://youtube.com/channel/UC4V-GxsMsL8o0d0yhWMD2xQ" target="_blank" title="" rel="nofollow"
+                   data-original-title="Наш канал на YouTube">
+                    <img src="./img/youtube2.svg"
+                         width="32" height="32" alt="YouTube">
+                </a>
+                &nbsp;
+                <a class="fa-stack fa-lg no-external-marker no-underline"
+                   href="https://www.linkedin.com/company/freelancehunt-com" target="_blank" title="" rel="nofollow"
+                   data-original-title="LinkedIn">
+                    <img src="./img/linkedin.svg"
+                         width="32" height="32" alt="Linkedin">
+                </a>
+                &nbsp;
+                <a class="fa-stack fa-lg no-external-marker no-underline" href="https://t.me/FreelancehuntNews"
+                   target="_blank" title="" rel="nofollow" data-original-title="Telegram">
+                    <img src="./img/telegram.svg"
+                         width="32" height="32" alt="Telegram">
+                </a>
+                &nbsp;
+                <a class="fa-stack fa-lg no-external-marker no-underline"
+                   href="https://join.skype.com/bot/e284c4c3-8587-43e9-8ab9-9c1eb4a18038" target="_blank" title=""
+                   rel="nofollow" data-original-title="Skype">
+                    <img src="./img/skype.svg"
+                         width="32" height="32" alt="Telegram">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="footer-extra">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    Қазақстанда жасалған © 2017-2018 <span style="color: #e74c3c;">❤</span>
+                    <a href="https://updown.io/npu7" target="_blank" rel="nofollow noopener"><i class="fa fa-sun-o"
+                                                                                                style="color: gold;"
+                                                                                                title="Аптайм"></i></a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <i class="fa fa-envelope-o"></i>&nbsp;<a
+                        href="mailto:%73%75%70%70%6f%72%74@%66%72%65%65%6c%61%6e%63%65%68%75%6e%74.%63%6f%6d">support@ESEPTE.KZ</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="fh-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content ">
+            <br>
+            <div style="width: 100%" class="text-center">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="fh-modal-lg" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <br>
+            <div style="width: 100%" class="text-center">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="fh-webrtc-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Входящий вызов</h4>
+            </div>
+            <div class="modal-body text-center">
+                <img src="./img/1.gif"
+                     width="225" height="225" class="pulse" data-caller-photo="" alt="Абонент">
+                <div class="h4" data-caller-name=""></div>
+                <span data-call-duration="" class="hidden h1">
+<span class="minutes">00</span>:<span class="seconds">00</span>
+</span>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-warning hidden" data-reject-call=""><i
+                        class="fa fa-volume-control-phone fa-rotate-90"></i> Отклонить
+                </button>
+                <button type="button" class="btn btn-primary hidden" data-disconnect-call=""><i
+                        class="fa fa-volume-control-phone fa-rotate-90"></i> Завершить звонок
+                </button>
+                <button type="button" class="btn btn-primary hidden" data-accept-call=""><i class="fa fa-phone"></i>
+                    Ответить на звонок
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" async=""
+        src="js/mixpanel-2-latest.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src=https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js crossorigin="anonymous"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="js/jquery.min.js"
+        crossorigin="anonymous"></script>
+<!--<![endif]-->
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+
+
+<script src="js/update.min.js"
+        async=""></script>
+<!--<i class="fa fa-chevron-up" id="back-to-top" style="display: inline;"></i>-->
+ </body>
+</html>
