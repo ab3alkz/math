@@ -153,30 +153,40 @@ function plusKxt(key) {
     var y2xt = resultObj[key]["kramerY2xt"];
 
     var arr = [];
-    var res;
+    var obj;
 
-    res = plusKxtInner(y1xx.cL, y2xt.cL, key);
-    arr.push(res);
-    res = plusKxtInner(y1xx.cL, y2xt.cR, key);
-    arr.push(res);
+    obj = plusKxtInner(y1xx.cL, y2xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y1xx.cL, y2xt.cR, key);
+    arr.push(obj);
 
-    res = plusKxtInner(y1xx.cR, y2xt.cL, key);
-    arr.push(res);
-    res = plusKxtInner(y1xx.cR, y2xt.cR, key);
-    arr.push(res);
+    obj = plusKxtInner(y1xx.cR, y2xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y1xx.cR, y2xt.cR, key);
+    arr.push(obj);
 
-    res = plusKxtInner(y2xx.cL, y1xt.cL, key);
-    arr.push(res);
-    res = plusKxtInner(y2xx.cL, y1xt.cR, key);
-    arr.push(res);
+    obj = plusKxtInner(y2xx.cL, y1xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y2xx.cL, y1xt.cR, key);
+    arr.push(obj);
 
-    res = plusKxtInner(y2xx.cR, y1xt.cL, key);
-    arr.push(res);
-    res = plusKxtInner(y2xx.cR, y1xt.cR, key);
-    arr.push(res);
-    var arr1 = shortestKxt(arr);
-    console.log(arr,arr1);
-    return 123456;
+    obj = plusKxtInner(y2xx.cR, y1xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y2xx.cR, y1xt.cR, key);
+    arr.push(obj);
+    arr = shortestKxt(arr);
+
+    var res = '';
+    for (var i = 0; i < arr.length; i++) {
+        var a = arr[i];
+        if(res!='') {
+            res+= ' + ';
+        }
+        res += a.v + 'e^' + a.qx+'x '+ 'e^' + a.qt+'t'
+    }
+
+
+    return res;
 }
 
 function shortestKxt(arr) {
@@ -184,12 +194,12 @@ function shortestKxt(arr) {
 
     for (var i = 0; i < 8; i++) {
         var ex = false;
-        for (var j = 0; j < res.length; j++) {
-            var rj = res[j];
-            if (rj) {
-                if (arr[i].v == rj.v
-                    && arr[i].qx == rj.qx
-                    && arr[i].qt == rj.qt) {
+        for (var j = 0; j < 8; j++) {
+            var aj = arr[j];
+            if (i != j) {
+                if (arr[i].v == aj.v
+                    && arr[i].qx == aj.qx
+                    && arr[i].qt == aj.qt) {
                     ex = true;
                 }
             }
