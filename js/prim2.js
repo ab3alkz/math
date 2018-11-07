@@ -174,16 +174,32 @@ function plusKxt(key) {
     arr.push(res);
     res = plusKxtInner(y2xx.cR, y1xt.cR, key);
     arr.push(res);
-
-    console.log(arr);
+    var arr1 = shortestKxt(arr);
+    console.log(arr,arr1);
     return 123456;
 }
 
 function shortestKxt(arr) {
-   var res = [];
+    var res = [];
 
+    for (var i = 0; i < 8; i++) {
+        var ex = false;
+        for (var j = 0; j < res.length; j++) {
+            var rj = res[j];
+            if (rj) {
+                if (arr[i].v == rj.v
+                    && arr[i].qx == rj.qx
+                    && arr[i].qt == rj.qt) {
+                    ex = true;
+                }
+            }
+        }
+        if (!ex) {
+            res.push(arr[i]);
+        }
+    }
 
-   return res
+    return res
 }
 
 function plusKxtInner(t, b, key) {
