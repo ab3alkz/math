@@ -141,54 +141,6 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
     return res;
 }
 
-function plusKxt(key) {
-    console.log(resultObj[key]["kramerY1xx"]);
-    console.log(resultObj[key]["kramerY2xx"]);
-    console.log(resultObj[key]["kramerY1xt"]);
-    console.log(resultObj[key]["kramerY2xt"]);
-
-    var y1xx = resultObj[key]["kramerY1xx"];
-    var y2xx = resultObj[key]["kramerY2xx"];
-    var y1xt = resultObj[key]["kramerY1xt"];
-    var y2xt = resultObj[key]["kramerY2xt"];
-
-    var arr = [];
-    var obj;
-
-    obj = plusKxtInner(y1xx.cL, y2xt.cL, key);
-    arr.push(obj);
-    obj = plusKxtInner(y1xx.cL, y2xt.cR, key);
-    arr.push(obj);
-
-    obj = plusKxtInner(y1xx.cR, y2xt.cL, key);
-    arr.push(obj);
-    obj = plusKxtInner(y1xx.cR, y2xt.cR, key);
-    arr.push(obj);
-
-    obj = plusKxtInner(y2xx.cL, y1xt.cL, key);
-    arr.push(obj);
-    obj = plusKxtInner(y2xx.cL, y1xt.cR, key);
-    arr.push(obj);
-
-    obj = plusKxtInner(y2xx.cR, y1xt.cL, key);
-    arr.push(obj);
-    obj = plusKxtInner(y2xx.cR, y1xt.cR, key);
-    arr.push(obj);
-    arr = shortestKxt(arr);
-
-    var res = '';
-    for (var i = 0; i < arr.length; i++) {
-        var a = arr[i];
-        if(res!='') {
-            res+= ' + ';
-        }
-        res += a.v + 'e^' + a.qx+'x '+ 'e^' + a.qt+'t'
-    }
-
-
-    return res;
-}
-
 function shortestKxt(arr) {
     var res = [];
 
@@ -311,4 +263,50 @@ function removeObjByid(list, id) {
     }
 
     return res2;
+}
+
+
+function plusKxt(key) {
+
+    var y1xx = resultObj[key]["kramerY1xx"];
+    var y2xx = resultObj[key]["kramerY2xx"];
+    var y1xt = resultObj[key]["kramerY1xt"];
+    var y2xt = resultObj[key]["kramerY2xt"];
+
+    var arr = [];
+    var obj;
+
+    obj = plusKxtInner(y1xx.cL, y2xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y1xx.cL, y2xt.cR, key);
+    arr.push(obj);
+
+    obj = plusKxtInner(y1xx.cR, y2xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y1xx.cR, y2xt.cR, key);
+    arr.push(obj);
+
+    obj = plusKxtInner(y2xx.cL, y1xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y2xx.cL, y1xt.cR, key);
+    arr.push(obj);
+
+    obj = plusKxtInner(y2xx.cR, y1xt.cL, key);
+    arr.push(obj);
+    obj = plusKxtInner(y2xx.cR, y1xt.cR, key);
+    arr.push(obj);
+    arr = shortestKxt(arr);
+
+    var res = '';
+    for (var i = 0; i < arr.length; i++) {
+        var a = arr[i];
+        if (res != '') {
+            res += getHtmlMain(getNbsp() + ' + ' + getNbsp());
+        }
+        res += getHtmlMain(getMathMultiplication(a.v)) + getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x') + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
+
+    }
+
+
+    return res;
 }
