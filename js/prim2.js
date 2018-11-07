@@ -136,6 +136,7 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
             kxt.q + 't'
             )
             + getHtmlBrackets(plusKxt(key))
+            + getHtmlMain(getNbsp() + " +  " + getNbsp())
         );
 
     return res;
