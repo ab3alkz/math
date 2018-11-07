@@ -9,6 +9,7 @@ function startPrim2(key) {
         document.getElementById('out').innerHTML = calcPrim2(key);
     }
 }
+
 $(document).ready(function () {
 
     var key = 'prim2'
@@ -49,7 +50,6 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
 
     arr['c41'].v = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C1"];
     arr['c42'].v = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C2"];
-
 
 
     arr['c11'].q = resultObj[key].K1 + resultObj[key].K1;
@@ -119,60 +119,78 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
             getHtmlMain(getBR(2) + "k(x,t) = ")
             + getHtmlMain(getBR() + getFraction(1, res_inner))
             + getDiv(
-                getDiv(resultObj[key]["kramerY1x"] + getBR() + resultObj[key]["kramerY1"], 'cramer-left')
-                + getDiv(resultObj[key]["kramerY2x"] + getBR() + resultObj[key]["kramerY2"], 'cramer-right'), "cramer-border math-inner")
+            getDiv(resultObj[key]["kramerY1x"] + getBR() + resultObj[key]["kramerY1"], 'cramer-left')
+            + getDiv(resultObj[key]["kramerY2x"] + getBR() + resultObj[key]["kramerY2"], 'cramer-right'), "cramer-border math-inner")
             + getHtmlMain(getBR() + getNbsp() + " =  ")
         );
-    //----------------------------------------------------------
-      ids = [11, 12, 21, 22, 31, 32, 41, 42];
 
 
-      arr = {};
-    for (var i in ids) {
-        arr['c' + ids[i]] = {id: ids[i]};
-    }
-
-    arr['c11'].v = (resultObj[key]["kramer1C1"] * resultObj[key].K1) * resultObj[key]["kramer2C1"];
-    arr['c12'].v = (resultObj[key]["kramer1C1"] * resultObj[key].K1) * resultObj[key]["kramer2C2"];
-
-    arr['c21'].v = (resultObj[key]["kramer1C2"] * resultObj[key].K2) * resultObj[key]["kramer2C1"];
-    arr['c22'].v = (resultObj[key]["kramer1C2"] * resultObj[key].K2) * resultObj[key]["kramer2C2"];
-
-    arr['c31'].v = (resultObj[key]["kramer2C1"] * resultObj[key].K1) * resultObj[key]["kramer1C1"];
-    arr['c32'].v = (resultObj[key]["kramer2C1"] * resultObj[key].K1) * resultObj[key]["kramer1C2"];
-
-    arr['c41'].v = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C1"];
-    arr['c42'].v = (resultObj[key]["kramer2C2"] * resultObj[key].K2) * resultObj[key]["kramer1C2"];
-
-
-
-    arr['c11'].q = resultObj[key].K1 + resultObj[key].K1;
-    arr['c12'].q = resultObj[key].K1 + resultObj[key].K2;
-
-    arr['c21'].q = resultObj[key].K2 + resultObj[key].K1;
-    arr['c22'].q = resultObj[key].K2 + resultObj[key].K2;
-
-    arr['c31'].q = resultObj[key].K1 + resultObj[key].K1;
-    arr['c32'].q = resultObj[key].K1 + resultObj[key].K2;
-
-    arr['c41'].q = resultObj[key].K2 + resultObj[key].K1;
-    arr['c42'].q = resultObj[key].K2 + resultObj[key].K2;
-
-    console.log(arr, resultObj)
-
-    //---------------------------------------------
     var kxt = resultObj[key]['Δ(t)'];
     kxt.q = 0 - kxt.q;
     res += getBR(5) +
         getFrame(
             getHtmlMain(getNbsp() + " =  " + getNbsp())
             + getHtmlSqr(
-                isCondition(kxt.v < 0, '-', '')
-                + isCondition(Math.abs(kxt.v) == 1, '', Math.abs(kxt.v)) + "e",
-                kxt.q + 't'
+            isCondition(kxt.v < 0, '-', '')
+            + isCondition(Math.abs(kxt.v) == 1, '', Math.abs(kxt.v)) + "e",
+            kxt.q + 't'
             )
-            + getHtmlBrackets(123456789)
+            + getHtmlBrackets(plusKxt(key))
         );
+
+    return res;
+}
+
+function plusKxt(key) {
+    console.log(resultObj[key]["kramerY1xx"]);
+    console.log(resultObj[key]["kramerY2xx"]);
+    console.log(resultObj[key]["kramerY1xt"]);
+    console.log(resultObj[key]["kramerY2xt"]);
+
+    var y1xx = resultObj[key]["kramerY1xx"];
+    var y2xx = resultObj[key]["kramerY2xx"];
+    var y1xt = resultObj[key]["kramerY1xt"];
+    var y2xt = resultObj[key]["kramerY2xt"];
+
+    var arr = [];
+    var res;
+
+    res = plusKxtInner(y1xx.cL, y2xt.cL, key);
+    arr.push(res);
+    res = plusKxtInner(y1xx.cL, y2xt.cR, key);
+    arr.push(res);
+
+    res = plusKxtInner(y1xx.cR, y2xt.cL, key);
+    arr.push(res);
+    res = plusKxtInner(y1xx.cR, y2xt.cR, key);
+    arr.push(res);
+
+    res = plusKxtInner(y2xx.cL, y1xt.cL, key);
+    arr.push(res);
+    res = plusKxtInner(y2xx.cL, y1xt.cR, key);
+    arr.push(res);
+
+    res = plusKxtInner(y2xx.cR, y1xt.cL, key);
+    arr.push(res);
+    res = plusKxtInner(y2xx.cR, y1xt.cR, key);
+    arr.push(res);
+
+    console.log(arr);
+    return 123456;
+}
+
+function shortestKxt(arr) {
+   var res = [];
+
+
+   return res
+}
+
+function plusKxtInner(t, b, key) {
+    var res = {};
+    res.v = t.v * b.v;
+    res.qx = t.q;
+    res.qt = b.q;
 
     return res;
 }
