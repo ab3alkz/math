@@ -136,7 +136,7 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
             kxt.q + 't'
             )
             + getHtmlBrackets(plusKxt(key))
-            + getHtmlMain(getNbsp() + " +  " + getNbsp())
+            + getHtmlMain(getNbsp() + " = " + getNbsp())
         );
 
     return res;
@@ -165,11 +165,12 @@ function shortestKxt(arr) {
     return res
 }
 
-function plusKxtInner(t, b, key) {
+function plusKxtInner(t, b, k) {
     var res = {};
     res.v = t.v * b.v;
     res.qx = t.q;
     res.qt = b.q;
+    res.k = k;
 
     return res;
 }
@@ -277,34 +278,62 @@ function plusKxt(key) {
     var arr = [];
     var obj;
 
-    obj = plusKxtInner(y1xx.cL, y2xt.cL, key);
+    obj = plusKxtInner(y1xx.cL, y2xt.cL, 'l');
     arr.push(obj);
-    obj = plusKxtInner(y1xx.cL, y2xt.cR, key);
-    arr.push(obj);
-
-    obj = plusKxtInner(y1xx.cR, y2xt.cL, key);
-    arr.push(obj);
-    obj = plusKxtInner(y1xx.cR, y2xt.cR, key);
+    obj = plusKxtInner(y1xx.cL, y2xt.cR, 'l');
     arr.push(obj);
 
-    obj = plusKxtInner(y2xx.cL, y1xt.cL, key);
+    obj = plusKxtInner(y1xx.cR, y2xt.cL, 'l');
     arr.push(obj);
-    obj = plusKxtInner(y2xx.cL, y1xt.cR, key);
+    obj = plusKxtInner(y1xx.cR, y2xt.cR, 'l');
     arr.push(obj);
 
-    obj = plusKxtInner(y2xx.cR, y1xt.cL, key);
+    obj = plusKxtInner(y2xx.cL, y1xt.cL, 'r');
     arr.push(obj);
-    obj = plusKxtInner(y2xx.cR, y1xt.cR, key);
+    obj = plusKxtInner(y2xx.cL, y1xt.cR, 'r');
+    arr.push(obj);
+
+    obj = plusKxtInner(y2xx.cR, y1xt.cL, 'r');
+    arr.push(obj);
+    obj = plusKxtInner(y2xx.cR, y1xt.cR, 'r');
     arr.push(obj);
     arr = shortestKxt(arr);
 
     var res = '';
+
+
+    var arrL = [];
+    var arrR = [];
     for (var i = 0; i < arr.length; i++) {
         var a = arr[i];
+        if (a.k == 'l') {
+            arrL.push(a);
+        } else if (a.k == 'r') {
+            arrR.push(a);
+        }
+    }
+
+    for (var i = 0; i < arrL.length; i++) {
+        var a = arrL[i];
         if (res != '') {
             res += getHtmlMain(getNbsp() + ' + ' + getNbsp());
         }
-        res += getHtmlMain(getMathMultiplication(a.v)) + getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x') + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
+        res += getHtmlMain(getMathMultiplication(a.v))
+            + getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
+            + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
+
+    }
+
+    for (var i = 0; i < arrR.length; i++) {
+        var a = arrR[i];
+        if (i == 0) {
+            res += getHtmlMain(getNbsp()) + getHtmlMinus(a.v) + getHtmlMain(getNbsp());
+        } else {
+            res += getHtmlMain(getNbsp() + ' + ' + getNbsp());
+            res += getHtmlMain(getMathMultiplication(a.v));
+        }
+        res += getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
+            + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
 
     }
 
