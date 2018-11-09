@@ -411,6 +411,7 @@ function shortestKxtFinalPlus(key) {
 
     console.log('rF', rF);
     console.log('kxt.v', kxt.v);
+    resultObj[key]['Kxt']['rF'] = rF;
     for (var i = 0; i < rF.length; i++) {
         var a = rF[i];
         if (i == 0) {
@@ -427,7 +428,7 @@ function shortestKxtFinalPlus(key) {
             }
             var qt = aa.qt + kxt.q;
             subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
-                + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '') + Math.abs(qt) ) + 't')
+                + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '') + Math.abs(qt)) + 't')
         }
         res += getHtmlBrackets(subRes);
     }
@@ -436,8 +437,36 @@ function shortestKxtFinalPlus(key) {
 }
 
 function getFunc(key) {
-    var res = getFrame(getHtmlMain(getBR() + "y(x) = " + isCondition(-1 < 0, '-', ''))
-        + getHtmlIntegral())
+
+    var kxt = resultObj[key]['Δ(t)'];
+    var rF = resultObj[key]['Kxt']['rF'];
+
+    var res_ = '';
+    for (var i = 0; i < rF.length; i++) {
+        var a = rF[i];
+        if (i == 0) {
+            res_ += getHtmlMain(mathRound4(a.v) + getNbsp());
+        } else {
+            res_ +=  getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
+        }
+        var subRes = '';
+        for (var j = 0; j < a.a.length; j++) {
+
+            var aa = a.a[j];
+            if (j > 0) {
+                subRes += getHtmlMain(getNbsp() + isCondition(aa.v < 0, '-', '+') + getNbsp());
+            }
+            var qt = aa.qt + kxt.q;
+            subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
+                + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '') + Math.abs(qt)) + 't')
+        }
+        res_ += getHtmlBrackets(subRes);
+    }
+
+
+    var res = getFrame(getHtmlMain(getBR() + "y(x) = " + isCondition(kxt.v < 0, '-', ''))
+        + getHtmlIntegral(res_)
+        )
     ;
 
     return res;

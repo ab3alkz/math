@@ -116,23 +116,22 @@
 }
 
 .math-integral {
-    width: 50px;
     float: left;
     height: 80px;
+    padding-left: 40px;
     background: url("../img/integral.png") no-repeat;
     background-size: contain;
 }
 
 .math-integral-wrapper {
-    width: 50px;
-    float: left;
+     float: left;
 }
 
-.math-integral-wrapper div{
+.math-integral-wrapper .math-integral, .math-integral-wrapper .math-integral-top, .math-integral-wrapper .math-integral-bottom{
     float: left;
 }
 
 .math-integral-top {
     text-align: right;
-    width: 65%;
+    width: 40px;
 }

@@ -154,6 +154,10 @@ function getHtmlBrackets(v) {
 }
 
 
-function getHtmlIntegral() {
-    return getDiv(getDiv('x','integral-top') + getDiv('', 'main math-integral') + getDiv('0','integral-bottom'), 'integral-wrapper')
- }
+function getHtmlIntegral(v) {
+    return getDiv(getDiv('x', 'integral-top clearfix')
+        + getDiv('', ' clearfix')
+        + getDiv(v, 'main math-integral clearfix')
+        + getDiv('', ' clearfix')
+        + getDiv('0', 'integral-bottom clearfix'), 'integral-wrapper')
+}
