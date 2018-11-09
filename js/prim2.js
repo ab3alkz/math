@@ -447,7 +447,7 @@ function getFunc(key) {
         if (i == 0) {
             res_ += getHtmlMain(mathRound4(a.v) + getNbsp());
         } else {
-            res_ +=  getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
+            res_ += getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
         }
         var subRes = '';
         for (var j = 0; j < a.a.length; j++) {
@@ -465,7 +465,13 @@ function getFunc(key) {
 
 
     var res = getFrame(getHtmlMain(getBR() + "y(x) = " + isCondition(kxt.v < 0, '-', ''))
-        + getHtmlIntegral(res_)
+        + getHtmlIntegral(res_
+            + getHtmlMain(getNbsp()
+                + ' * '
+                + getNbsp()
+            )
+            + getHtmlSqr('t', 2)
+            + getHtmlMain('dt'))
         )
     ;
 
