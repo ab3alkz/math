@@ -152,3 +152,8 @@ function getHtmlBraceRight(val, braceTxt) {
 function getHtmlBrackets(v) {
     return getDiv(getDiv(getDiv(v), 'main math-brackets'), 'inner')
 }
+
+
+function getHtmlIntegral() {
+    return getDiv(getDiv('x','integral-top') + getDiv('', 'main math-integral') + getDiv('0','integral-bottom'), 'integral-wrapper')
+ }

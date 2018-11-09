@@ -114,3 +114,24 @@
     border-radius: 10px;
     margin-left: 5px;
 }
+
+.math-integral {
+    width: 50px;
+    float: left;
+    height: 80px;
+    background: url("../img/integral.png") no-repeat;
+    background-size: contain;
+}
+
+.math-integral-wrapper {
+    width: 50px;
+    float: left;
+}
+.math-integral-wrapper div{
+    float: left;
+}
+
+.math-integral-top {
+    text-align: right;
+    width: 65%;
+}

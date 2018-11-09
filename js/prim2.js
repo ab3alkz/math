@@ -22,13 +22,15 @@ function calcPrim2(key) {
 
     var res = calcPrim1(key);
     res += '<h1>Сонымен:</h1>';
-    res += getCramerF2(key, 1, resultObj[key].K1, resultObj[key].K2, 1, 0);
+    res += getCramerF2(key);
+    res += getBR(2) + '<h1>Сондықтан:</h1>';
 
+    res += getFunc(key);
     document.getElementById('out').innerHTML = res;
 }
 
 
-function getCramerF2(key, Y_idx, k1, k2, y, y_) {
+function getCramerF2(key) {
     var res = getBR(2) + "<hr>";
     var ids = [11, 12, 21, 22, 31, 32, 41, 42];
     var idsl = [11, 12, 21, 22];
@@ -304,7 +306,6 @@ function plusKxt(key) {
 
     var res = '';
 
-
     var arrL = [];
     var arrR = [];
     for (var i = 0; i < arr.length; i++) {
@@ -325,23 +326,18 @@ function plusKxt(key) {
         res += getHtmlMain(getMathMultiplication(mathRound4(a.v)))
             + getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
             + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
-
     }
 
     for (var i = 0; i < arrR.length; i++) {
         var a = arrR[i];
         res += getHtmlMain(getNbsp()) + getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
-
         res += getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
             + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
-
     }
 
     resultObj[key]["Kxt"] = {};
     resultObj[key]["Kxt"]['arrL'] = arrL;
     resultObj[key]["Kxt"]['arrR'] = arrR;
-
-
     return res;
 }
 
@@ -358,14 +354,9 @@ function shortestKxtFinalPlus(key) {
             if (a.qx == b.qx && a.qt == b.qt) {
                 a.v += b.v;
             }
-
         }
         rr.push(a);
-
     }
-
-    console.log(rr, arrL, arrR)
-
 
     for (var i = 0; i < rr.length; i++) {
         var a = rr[i];
@@ -379,6 +370,14 @@ function shortestKxtFinalPlus(key) {
             + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
 
     }
+
+    return res;
+}
+
+function getFunc(key) {
+    var res = getFrame(getHtmlMain(getBR() + "y(x) = ")
+        + getHtmlIntegral())
+    ;
 
     return res;
 }
