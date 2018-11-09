@@ -110,7 +110,7 @@
 .math-brackets {
     border-left: 1px solid #000;
     border-right: 1px solid #000;
-    padding: 10px 10px 10px 10px !important;
+    padding: 10px 10px 20px 10px !important;
     border-radius: 10px;
     margin-left: 5px;
 }

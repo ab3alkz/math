@@ -358,24 +358,85 @@ function shortestKxtFinalPlus(key) {
         rr.push(a);
     }
 
+
+    var kxt = resultObj[key]['Δ(t)'];
+    res += getHtmlSqr(
+        isCondition(kxt.v < 0, '-', '')
+        + isCondition(Math.abs(kxt.v) == 1, '', Math.abs(kxt.v)) + "e",
+        kxt.q + 't'
+    );
+    var subRes = '';
+
     for (var i = 0; i < rr.length; i++) {
         var a = rr[i];
         if (i == 0) {
-            res += getHtmlMain(getNbsp() + mathRound4(a.v) + getNbsp());
+            subRes += getHtmlMain(getNbsp() + mathRound4(a.v) + getNbsp());
+        } else {
+            subRes += getHtmlMain(getNbsp()) + getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
+        }
+
+        subRes += getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
+            + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
+
+    }
+
+    res += getHtmlBrackets(subRes);
+
+
+    var rF = [];
+
+    for (var i = 0; i < rr.length; i++) {
+        var ex = null;
+        var a = rr[i];
+
+        for (var j = 0; j < rr.length; j++) {
+            var b = rF[j];
+            if (b && Math.abs(a.v) == Math.abs(b.v)) {
+                ex = b;
+                continue;
+            }
+
+        }
+        if (ex == null) {
+            ex = a;
+            ex.a = [];
+            ex.a.push(a);
+            rF.push(ex);
+        } else {
+            ex.a.push(a);
+        }
+
+    }
+    res += getHtmlMain(getNbsp() + ' = ' + getNbsp());
+
+    console.log('rF', rF);
+    console.log('kxt.v', kxt.v);
+    for (var i = 0; i < rF.length; i++) {
+        var a = rF[i];
+        if (i == 0) {
+            res += getHtmlMain(getNbsp() + isCondition(kxt.v < 0, '-', '') + mathRound4(a.v) + getNbsp());
         } else {
             res += getHtmlMain(getNbsp()) + getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
         }
+        var subRes = '';
+        for (var j = 0; j < a.a.length; j++) {
 
-        res += getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
-            + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
-
+            var aa = a.a[j];
+            if (j > 0) {
+                subRes += getHtmlMain(getNbsp() + isCondition(aa.v < 0, '-', '+') + getNbsp());
+            }
+            var qt = aa.qt + kxt.q;
+            subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
+                + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '') + Math.abs(qt) ) + 't')
+        }
+        res += getHtmlBrackets(subRes);
     }
 
     return res;
 }
 
 function getFunc(key) {
-    var res = getFrame(getHtmlMain(getBR() + "y(x) = ")
+    var res = getFrame(getHtmlMain(getBR() + "y(x) = " + isCondition(-1 < 0, '-', ''))
         + getHtmlIntegral())
     ;
 
