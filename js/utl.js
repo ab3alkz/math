@@ -26,6 +26,7 @@ function getDiv(val, class_) {
         return '<div class="math-' + class_ + '">' + val +
             '</div>';
 }
+
 function getClearfix() {
 
     return '<div class="clearfix"></div>';
@@ -130,6 +131,14 @@ function getFraction(top, bottom) {
 
 function mathRound(num) {
     return Math.round(num * 100) / 100;
+}
+
+function mathRound3(num) {
+    return Math.round(num * 1000) / 1000;
+}
+
+function mathRound4(num) {
+    return Math.round(num * 10000) / 10000;
 }
 
 function getHtmlBraceLeft(val, braceTxt) {

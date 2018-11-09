@@ -137,7 +137,11 @@ function getCramerF2(key, Y_idx, k1, k2, y, y_) {
             )
             + getHtmlBrackets(plusKxt(key))
             + getHtmlMain(getNbsp() + " = " + getNbsp())
-        );
+        )
+        + getBR(2)
+        + getFrame(
+            getHtmlMain(getNbsp() + " = " + getNbsp())
+            + shortestKxtFinalPlus(key));
 
     return res;
 }
@@ -182,7 +186,7 @@ function minusSqrObj(rrl, rrr) {
             if (rrl[i].q == rrr[j].q) {
                 var rr = mathRound(rrl[i].r - rrr[j].r);
                 if (rr != 0) {
-                    var obj = {v: rr, q: rrl[j].q}
+                    var obj = {v: rr, q: rrl[j].q};
                     res.push(obj);
                 }
             }
@@ -269,7 +273,6 @@ function removeObjByid(list, id) {
 
 
 function plusKxt(key) {
-
     var y1xx = resultObj[key]["kramerY1xx"];
     var y2xx = resultObj[key]["kramerY2xx"];
     var y1xt = resultObj[key]["kramerY1xt"];
@@ -309,6 +312,7 @@ function plusKxt(key) {
         if (a.k == 'l') {
             arrL.push(a);
         } else if (a.k == 'r') {
+            a.v = 0 - a.v;
             arrR.push(a);
         }
     }
@@ -318,7 +322,7 @@ function plusKxt(key) {
         if (res != '') {
             res += getHtmlMain(getNbsp() + ' + ' + getNbsp());
         }
-        res += getHtmlMain(getMathMultiplication(a.v))
+        res += getHtmlMain(getMathMultiplication(mathRound4(a.v)))
             + getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
             + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
 
@@ -326,17 +330,55 @@ function plusKxt(key) {
 
     for (var i = 0; i < arrR.length; i++) {
         var a = arrR[i];
-        if (i == 0) {
-            res += getHtmlMain(getNbsp()) + getHtmlMinus(a.v) + getHtmlMain(getNbsp());
-        } else {
-            res += getHtmlMain(getNbsp() + ' + ' + getNbsp());
-            res += getHtmlMain(getMathMultiplication(a.v));
-        }
+        res += getHtmlMain(getNbsp()) + getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
+
         res += getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
             + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
 
     }
 
+    resultObj[key]["Kxt"] = {};
+    resultObj[key]["Kxt"]['arrL'] = arrL;
+    resultObj[key]["Kxt"]['arrR'] = arrR;
+
+
+    return res;
+}
+
+function shortestKxtFinalPlus(key) {
+
+    var arrL = resultObj[key]["Kxt"]['arrL'];
+    var arrR = resultObj[key]["Kxt"]['arrR'];
+    var res = '';
+    var rr = [];
+    for (var i = 0; i < arrL.length; i++) {
+        var a = arrL[i];
+        for (var j = 0; j < arrR.length; j++) {
+            var b = arrR[j];
+            if (a.qx == b.qx && a.qt == b.qt) {
+                a.v += b.v;
+            }
+
+        }
+        rr.push(a);
+
+    }
+
+    console.log(rr, arrL, arrR)
+
+
+    for (var i = 0; i < rr.length; i++) {
+        var a = rr[i];
+        if (i == 0) {
+            res += getHtmlMain(getNbsp() + mathRound4(a.v) + getNbsp());
+        } else {
+            res += getHtmlMain(getNbsp()) + getHtmlPlus(mathRound4(a.v)) + getHtmlMain(getNbsp());
+        }
+
+        res += getHtmlSqr("e", isCondition(a.qx == 1, '', a.qx) + 'x')
+            + getHtmlSqr("e", isCondition(a.qt == 1, '', a.qt) + 't')
+
+    }
 
     return res;
 }
