@@ -1,19 +1,15 @@
 /**
- * Created by a.amnzhol on 25.11.2017.
+ * Created by a.amanzhol on 25.11.2017.
  */
 
 var resultObj = {};
 
-function startPrim1(key) {
-    if (document.getElementById('mathFormula')) {
-        document.getElementById('mathFormula').innerHTML = getFormula()
-            + getFrame(getHtmlMain("y(0) = 0 "))
-            + getFrame(getHtmlMain("y'(0) = 0 "));
-        document.getElementById('out').innerHTML = calcPrim1(key);
-    }
+function calcPrim1(key) {
+        document.getElementById('out').innerHTML = getPrim1(key);
+
 }
 
-function calcPrim1(key) {
+function getPrim1(key) {
     var k1 = document.getElementById('n1').value;
     var k2 = document.getElementById('n2').value;
 

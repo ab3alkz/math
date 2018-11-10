@@ -14,13 +14,30 @@
 
                 <BR/>
 
-                <p>1 коэфицент: <input type="number" id="n1" value="2"></p>
-                <p>2 коэфицент: <input type="number" id="n2" value="-3"></p>
-                <br/><br/><!--
+               <!--
                 <p>функция: <input type="text" id="n3"></p>
                 <button onclick="calcPrim1()">Есепте</button>-->
+                <?php
+                $prim = null;
+                if (isset($_GET['prim'])) {
+                    $prim = $_GET['prim'];
 
-                <button onclick="calcPrim2()"> Есептелу жолы</button>
+                }
+                if ($prim == null || $prim == 0) {
+                    $prim = 1;
+                }
+                $primresult = mysql_query("SELECT * FROM prim Where id= $prim", $db) or die("Invalid query: " . mysql_error());
+                $primmyrow = mysql_fetch_array($primresult);
+                if ($primmyrow == true) {
+                    do {
+                            ?>
+
+                <?php
+                        echo $primmyrow['form'].' <br/><br/>';
+                        echo '<button onclick="'.$primmyrow['fnc'].'"> Есептелу жолы</button>';
+                    } while ($primmyrow = mysql_fetch_array($primresult));
+                }
+                ?>
 
                 <hr>
                 <p id="out"></p>

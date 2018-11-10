@@ -1,5 +1,5 @@
 /**
- * Created by a.amnzhol on 25.11.2017.
+ * Created by a.amanzhol on 25.11.2017.
  */
 function startPrim2(key) {
     if (document.getElementById('mathFormula')) {
@@ -10,17 +10,12 @@ function startPrim2(key) {
     }
 }
 
-$(document).ready(function () {
 
-    var key = 'prim2'
-    startPrim2(key);
-    calcPrim2(key);
-});
 
 
 function calcPrim2(key) {
 
-    var res = calcPrim1(key);
+    var res = getPrim1(key);
     res += '<h1>Сонымен:</h1>';
     res += getCramerF2(key);
     res += getBR(2) + '<h1>Сондықтан:</h1>';

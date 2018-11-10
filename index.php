@@ -56,11 +56,12 @@
                     if ($action == "add") {
                         $name = $_POST['name'];
                         $area = $_POST['area'];
+                        $prim = $_POST['prim'];
                         $link = translit($name);
                     if (isset($name) and isset($area)) {
-                            $area = str_replace("'", "\"", $area);
+                        $area = str_replace("'", "\"", $area);
 
-                        $r = mysql_query("insert into lecture (name, txt, id_txt, dat, cuser) values ('$name', '$area', '$link', sysdate(), '$cuser')")or die("Invalid query: " . mysql_error());
+                        $r = mysql_query("insert into lecture (name, txt, id_txt, dat, cuser, prim) values ('$name', '$area', '$link', sysdate(), '$cuser', '$prim')") or die("Invalid query: " . mysql_error());
                         $result = mysql_query("SELECT * FROM lecture where id_txt='$link'", $db);
                         $myrow = mysql_fetch_array($result);
                     if ($myrow == true) {
@@ -85,6 +86,21 @@
                                 <br><br>
                                 <textarea style="width: 100%; height: 380px" class="mceEditor" id="area"
                                           name="area"></textarea>
+
+                                <br>
+                                <span>Есеп</span><br>
+                                <select name="prim" class="prim-select">
+                                    <option id=""></option>
+                                    <?php
+                                    $primresult = mysql_query("SELECT * FROM prim", $db) or die("Invalid query: " . mysql_error());
+                                    $primmyrow = mysql_fetch_array($primresult);
+                                    if ($primmyrow == true) {
+                                        do {
+                                            echo '<option id="' . $primmyrow['id'] . '">' . $primmyrow['name'];
+                                        } while ($primmyrow = mysql_fetch_array($primresult));
+                                    }
+                                    ?>
+                                </select><br>
                                 <input type="submit" value="Сақтау" style="margin-top: 10px"
                                        class='btn btn-success'>
                             </div>
@@ -108,10 +124,11 @@
                     } else if (isset($_POST['name']) and isset($_POST['area'])) {
                         $name = $_POST['name'];
                         $area = $_POST['area'];
+                        $prim = $_POST['prim'];
                         $link = translit($name);
-                        
-                            $area = str_replace("'", "\"", $area);
-                        $r = mysql_query("UPDATE lecture SET name = '$name', txt = '$area', id_txt = '$link' WHERE id = '$id'")or die("Invalid query: " . mysql_error());
+
+                        $area = str_replace("'", "\"", $area);
+                        $r = mysql_query("UPDATE lecture SET name = '$name', txt = '$area', id_txt = '$link', prim = '$prim' WHERE id = '$id'") or die("Invalid query: " . mysql_error());
 
                     }
                     }
@@ -119,7 +136,7 @@
                     if ($action != "delete" && $action != "editor") {
                         mysql_query("insert into stat(lecture, cuser, dat) VALUES ('$id', '$cuser', sysdate() )", $db) or die("Invalid query: " . mysql_error());
                     }
-                    $result = mysql_query("SELECT l.*, (select COUNT(1) FROM questions q WHERE q.test = l.id) questions FROM lecture l where id='$id'", $db)or die("Invalid query: " . mysql_error());
+                    $result = mysql_query("SELECT l.*, (select COUNT(1) FROM questions q WHERE q.test = l.id) questions FROM lecture l where id='$id'", $db) or die("Invalid query: " . mysql_error());
                     $myrow = mysql_fetch_array($result);
                     if ($myrow == true) {
                     do {
@@ -135,6 +152,25 @@
                                 <br><br>
                                 <textarea style="width: 100%; height: 380px" class="mceEditor" id="area"
                                           name="area"><?php echo $myrow['txt']; ?></textarea>
+                                <br>
+                                <span>Есеп</span><br>
+                                <select name="prim" class="prim-select">
+                                    <option id=""></option>
+                                    <?php
+                                    $primresult = mysql_query("SELECT * FROM prim", $db) or die("Invalid query: " . mysql_error());
+                                    $primmyrow = mysql_fetch_array($primresult);
+                                    if ($primmyrow == true) {
+                                        do {
+                                            $selected = "";
+                                            if ($primmyrow['id'] == $myrow['prim']) {
+                                                $selected = ' selected="selected"';
+                                            }
+
+                                            echo '<option value="' . $primmyrow['id'] . '" ' . $selected . '>' . $primmyrow['name'];
+                                        } while ($primmyrow = mysql_fetch_array($primresult));
+                                    }
+                                    ?>
+                                </select><br>
                                 <input type="submit" value="Сақтау" style="margin-top: 10px"
                                        class='btn btn-success'>
                             </div>
@@ -154,7 +190,11 @@
                             <i class="fa fa-trash"></i>&nbsp;&nbsp;Дәрісті жою</a>
                         <a class='btn btn-primary'
                            href="?action=edittest&lecture=<?php echo $lecture; ?>&id=<?php echo $id; ?>">
-                            <i class="fa fa-plus"></i>&nbsp;&nbsp;<?php if ( $myrow['test']) {echo "Сынақты өзгерту";} else {echo "Сынақ қосу";} ?></a>
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp;<?php if ($myrow['test']) {
+                                echo "Сынақты өзгерту";
+                            } else {
+                                echo "Сынақ қосу";
+                            } ?></a>
                         <a class='btn btn-info'
                            href="?action=getresult&lecture=<?php echo $lecture; ?>&id=<?php echo $id; ?>">
                             <i class="fa fa-info"></i>&nbsp;&nbsp;Сынақ натижелері</a>
@@ -177,11 +217,11 @@
                             Дәріс бойынша сынақ өту </a>
 
                         <?php
+                        if ($myrow['prim'] && $myrow['prim'] > 0) {
+                            echo '<a href="math.php?prim=' . $myrow['prim'] . '" class="btn btn-success"><i class="fa fa-calculator"></i>&nbsp;Есеп шығару</a>';
+                        }
                     }
-                    ?>
 
-                        <a href="math.php" class="btn btn-success"><i class="fa fa-calculator"></i>&nbsp;Есеп шығару</a>
-                <?php
 
                     }
                     } while ($myrow = mysql_fetch_array($result));

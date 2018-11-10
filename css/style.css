@@ -110,3 +110,8 @@ table.editquestion input {
     text-decoration: none;
     font-size: 17px;
 }
+
+.prim-select{
+    padding: 5px;
+    width: 100%;
+}
