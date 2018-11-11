@@ -135,3 +135,18 @@
     text-align: right;
     width: 40px;
 }
+
+.math-frame .math-inner .math-sqr .math-inner .math-main {
+    font-size: 11px;
+    line-height: 11px!important;
+    display: inline-block;
+    float: left;
+    padding-top: 5px;
+    padding-right: 3px;
+
+}
+.math-frame .math-inner .math-sqr .math-fraction,
+.math-frame .math-inner .math-sqr .math-fraction table {
+    font-size: 11px;
+    line-height: 11px!important;
+}

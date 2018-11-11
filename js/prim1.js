@@ -5,7 +5,7 @@
 var resultObj = {};
 
 function calcPrim1(key) {
-        document.getElementById('out').innerHTML = getPrim1(key);
+    document.getElementById('out').innerHTML = getPrim1(key);
 
 }
 
@@ -43,9 +43,9 @@ function startCalc(k1, k2, key) {
     res += getDiscriminant(1, k1, k2, key);
 
     res += getBR() + getDiv('Ортақ шешімі:', 'title');
-    if(resultObj[key].D<0) {
-        res +=  commonDecisionLeastZero(resultObj[key].K1, resultObj[key].K2, key);
-    }else {
+    if (resultObj[key].D < 0) {
+        res += commonDecisionLeastZero(resultObj[key].K1, resultObj[key].K2, k1, k2, key);
+    } else {
         res += commonDecision(resultObj[key].K1, resultObj[key].K2, key);
     }
     return res;
@@ -74,25 +74,30 @@ function getDiscriminant(a, b, c, key) {
     );
 
 
-    resultObj[key].K1 = mathRound((-2 - Math.sqrt(resultObj[key].D)) / 2);
+    resultObj[key].K1 = mathRound((0 - a - Math.sqrt(resultObj[key].D)) / 2);
 
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ')
-        + getFraction(getHtmlMain(isCondition(b<0,'','-') + b)
-            + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
-        + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
-    );
+            getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ')
+            + getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+                + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+        );
+
+    if (resultObj[key].D > 0) {
+        res += getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1);
+    }
 
 
-    resultObj[key].K2 = mathRound((-2 + Math.sqrt(resultObj[key].D)) / 2);
+    resultObj[key].K2 = mathRound((0 - a + Math.sqrt(resultObj[key].D)) / 2);
 
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ')
-        + getFraction(getHtmlMain(isCondition(b<0,'','-') + b)
-            + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
-        + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
-    );
+            getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ')
+            + getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+                + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+        );
 
+    if (resultObj[key].D > 0) {
+        res += getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2);
+    }
     return res;
 }
 
@@ -119,52 +124,66 @@ function commonDecision(k1, k2, key) {
     return res;
 }
 
-function commonDecisionLeastZero(k1, k2, key) {
+function commonDecisionLeastZero(k1, k2, a, b, key) {
     var res = getFrame(
-        getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
-       + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
-        + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
-    );
-/*
+            getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
+            + getHtmlSqr('e', getHtmlMain('-') + getFraction('a', 2) + getHtmlMain(getNbsp() + ' x'))
+            + getHtmlBrackets(
+                getHtmlMain('cos') + getHtmlBrackets(
+                    getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+                        + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+                    + getHtmlMain(' x '))
+                + getHtmlMain(getNbsp() + ' + isin')
+                + getHtmlBrackets(
+                    getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+                        + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+                    + getHtmlMain(getNbsp() + ' x '))
+            )
+        )
+    ;
+    res += getBR(2);
     res += getFrame(
-        getHtmlIdx("y'", 1) + getHtmlMain("(x) = ")
-        + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
-        + getHtmlIdx(isCondition(k2 < 0, ' - ', ' + ') + isCondition(k2 == 1, '', k2) + 'c', 2)
-        + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
-    );
-
-    res = getHtmlBraceRight(res, getFrame(getHtmlIdx('c', 1) + getHtmlIdx(', c', 2) + getHtmlMain(' - кез келген тұрақтылар')));
-
-
-    res += getCramer(key, 1, k1, k2, 1, 0);
-    res += getCramer(key, 2, k1, k2, 0, 1);*/
+        getHtmlIdx('y', 2) + getHtmlMain("(x) = ")
+        + getHtmlSqr('e', getHtmlMain('-') + getFraction('a', 2) + getHtmlMain(getNbsp() + ' x'))
+        + getHtmlBrackets(
+            getHtmlMain('cos') + getHtmlBrackets(
+                getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+                    + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+                + getHtmlMain(' x '))
+            + getHtmlMain(getNbsp() + ' - isin')
+            + getHtmlBrackets(
+                getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+                    + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+                + getHtmlMain(getNbsp() + ' x '))
+        )
+    )
     return res;
 }
 
 function getCramer(key, Y_idx, k1, k2, y, y_) {
 
     var res = getBR(2) + "<hr>" + getHtmlBraceLeft(
-        getFrame(
-            getHtmlIdx('y', Y_idx) + getHtmlMain("(0) = ")
-            + getHtmlIdx('c', 1)
-            + getHtmlIdx(' + c', 2) + getHtmlMain(' = ' + y)
-        )
-        + getFrame(
-        getHtmlIdx("y'", Y_idx) + getHtmlMain("(0) = ")
-        + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1)
-        + getHtmlMain(' + ')
-        + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = ' + y_)
-        )
-    );
+            getFrame(
+                getHtmlIdx('y', Y_idx) + getHtmlMain("(0) = ")
+                + getHtmlIdx('c', 1)
+                + getHtmlIdx(' + c', 2) + getHtmlMain(' = ' + y)
+            )
+            + getFrame(
+                getHtmlIdx("y'", Y_idx) + getHtmlMain("(0) = ")
+                + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1)
+                + getHtmlMain(' + ')
+                + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = ' + y_)
+            )
+        );
 
     var delta = mathRound(1 * k2 - k1 * 1);
     res += getBR(1) +
         getFrame(
             getHtmlMain("Δ = ")
             + getDiv(
-            getDiv(1 + getBR() + k1, 'cramer-left')
-            + getDiv(1 + getBR() + k2, 'cramer-right')
-            , "cramer-border math-inner")
+                getDiv(1 + getBR() + k1, 'cramer-left')
+                + getDiv(1 + getBR() + k2, 'cramer-right')
+                , "cramer-border math-inner")
 
             + getHtmlMain(getNbsp() + " = 1 * " + k2 + " - " + getMathMultiplication(k1) + " * 1 = ")
             + getHtmlMain(getNbsp() + delta)
@@ -175,8 +194,8 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         getFrame(
             getHtmlIdx("Δ", 1) + getHtmlMain(" = ")
             + getDiv(
-            getDiv(y + getBR() + y_, 'cramer-left')
-            + getDiv(1 + getBR() + 1, 'cramer-right'), "cramer-border math-inner")
+                getDiv(y + getBR() + y_, 'cramer-left')
+                + getDiv(1 + getBR() + 1, 'cramer-right'), "cramer-border math-inner")
             + getHtmlMain(getNbsp() + " = " + delta_1)
         );
 
@@ -185,8 +204,8 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         getFrame(
             getHtmlIdx("Δ", 2) + getHtmlMain(" = ")
             + getDiv(
-            getDiv(k2 + getBR() + k1, 'cramer-left')
-            + getDiv(y + getBR() + y_, 'cramer-right'), "cramer-border math-inner")
+                getDiv(k2 + getBR() + k1, 'cramer-left')
+                + getDiv(y + getBR() + y_, 'cramer-right'), "cramer-border math-inner")
             + getHtmlMain(getNbsp() + " = " + delta_2)
         );
 
