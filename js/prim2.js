@@ -14,11 +14,13 @@ function startPrim2(key) {
 function calcPrim2(key) {
 
     var res = getPrim1(key);
-    res += '<h1>Сонымен:</h1>';
-    res += getCramerF2(key);
-    res += getBR(2) + '<h1>Сондықтан:</h1>';
+    if (resultObj[key].D > 0) {
+        res += '<h1>Сонымен:</h1>';
+        res += getCramerF2(key);
+        res += getBR(2) + '<h1>Сондықтан:</h1>';
 
-    res += getFunc(key);
+        res += getFunc(key);
+    }
     document.getElementById('out').innerHTML = res;
 }
 
