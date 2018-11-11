@@ -458,15 +458,21 @@ function getFunc(key) {
         res_ += getHtmlBrackets(subRes);
     }
 
-
+    var inst, contents = new Object();
+    for (inst in tinyMCE.editors) {
+        if (tinyMCE.editors[inst].getContent)
+            contents[inst] = tinyMCE.editors[inst].getContent();
+        console.log('inst',inst, tinyMCE.editors[inst].getContent())
+    }
+    var functionArea =  tinyMCE.editors[0].getContent();
+    console.log("functionArea",functionArea)
     var res = getFrame(getHtmlMain(getBR() + "y(x) = " + isCondition(kxt.v < 0, '-', ''))
         + getHtmlIntegral(res_
             + getHtmlMain(getNbsp()
                 + ' * '
                 + getNbsp()
             )
-            + getHtmlSqr('t', 2)
-            + getHtmlMain('dt'))
+            + getHtmlMain(functionArea))
         )
     ;
 
