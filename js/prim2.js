@@ -421,7 +421,8 @@ function shortestKxtFinalPlus(key) {
             }
             var qt = aa.qt + kxt.q;
             subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
-                + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '') + Math.abs(qt)) + 't')
+                + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '')
+                        + mathRound4(Math.abs(qt))) + 't')
         }
         res += getHtmlBrackets(subRes);
     }
@@ -452,7 +453,7 @@ function getFunc(key) {
             var qt = aa.qt + kxt.q;
             subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
                 + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '')
-                        + Math.abs(qt))
+                        + mathRound4(Math.abs(qt)))
                     + 't'
                 )
         }
