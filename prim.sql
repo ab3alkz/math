@@ -14,8 +14,8 @@ CREATE TABLE `prim` (
 --
 
 INSERT INTO `prim` (`id`, `name`, `fnc`, `form`) VALUES
-  (1, 'Есеп 1', 'calcPrim1()', '<p>1 коэфицент: <input type=\"number\" id=\"n1\" value=\"2\"></p>                 <p>2 коэфицент: <input type=\"number\" id=\"n2\" value=\"-3\"></p>'),
-  (2, 'Есеп 2', 'calcPrim2()', '<p>1 коэфицент: <input type=\"number\" id=\"n1\" value=\"2\"></p>                 <p>2 коэфицент: <input type=\"number\" id=\"n2\" value=\"-3\"></p>');
+  (1, 'Есеп 1', 'calcPrim1()', '<p>1 коэфицент: <input type=\"number\" id=\"n1\" value=\"2\"></p><p>2 коэфицент: <input type=\"number\" id=\"n2\" value=\"-3\"></p>'),
+  (2, 'Есеп 2', 'calcPrim2()', '<p>1 коэфицент: <input type=\"number\" id=\"n1\" value=\"2\"></p><p>2 коэфицент: <input type=\"number\" id=\"n2\" value=\"-3\"></p><p>Функция:<textarea style=\"width: 100%; height: 60px\" class=\"mceEditor\" id=\"functionArea\" > </textarea></p>');
 
 --
 -- Индексы сохранённых таблиц
