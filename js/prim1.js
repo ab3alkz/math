@@ -43,7 +43,11 @@ function startCalc(k1, k2, key) {
     res += getDiscriminant(1, k1, k2, key);
 
     res += getBR() + getDiv('Ортақ шешімі:', 'title');
-    res += commonDecision(resultObj[key].K1, resultObj[key].K2, key);
+    if(resultObj[key].D<0) {
+        res +=  commonDecisionLeastZero(resultObj[key].K1, resultObj[key].K2, key);
+    }else {
+        res += commonDecision(resultObj[key].K1, resultObj[key].K2, key);
+    }
     return res;
 }
 
@@ -71,14 +75,22 @@ function getDiscriminant(a, b, c, key) {
 
 
     resultObj[key].K1 = mathRound((-2 - Math.sqrt(resultObj[key].D)) / 2);
+
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
+        getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ')
+        + getFraction(getHtmlMain(isCondition(b<0,'','-') + b)
+            + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+        + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1)
     );
 
 
     resultObj[key].K2 = mathRound((-2 + Math.sqrt(resultObj[key].D)) / 2);
+
     res += getFrame(getHtmlMain(' ')) + getFrame(
-        getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ') + getFraction(getHtmlMain('-' + b) + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
+        getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ')
+        + getFraction(getHtmlMain(isCondition(b<0,'','-') + b)
+            + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+        + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2)
     );
 
     return res;
@@ -104,6 +116,28 @@ function commonDecision(k1, k2, key) {
 
     res += getCramer(key, 1, k1, k2, 1, 0);
     res += getCramer(key, 2, k1, k2, 0, 1);
+    return res;
+}
+
+function commonDecisionLeastZero(k1, k2, key) {
+    var res = getFrame(
+        getHtmlIdx('y', 1) + getHtmlMain("(x) = ")
+       + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
+        + getHtmlIdx(' + c', 2) + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
+    );
+/*
+    res += getFrame(
+        getHtmlIdx("y'", 1) + getHtmlMain("(x) = ")
+        + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1) + getHtmlSqr('e', isCondition(k1 == 1, 'x', k1 + 'x'))
+        + getHtmlIdx(isCondition(k2 < 0, ' - ', ' + ') + isCondition(k2 == 1, '', k2) + 'c', 2)
+        + getHtmlSqr('e', isCondition(k2 == 1, 'x', k2 + 'x'))
+    );
+
+    res = getHtmlBraceRight(res, getFrame(getHtmlIdx('c', 1) + getHtmlIdx(', c', 2) + getHtmlMain(' - кез келген тұрақтылар')));
+
+
+    res += getCramer(key, 1, k1, k2, 1, 0);
+    res += getCramer(key, 2, k1, k2, 0, 1);*/
     return res;
 }
 
