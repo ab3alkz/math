@@ -472,7 +472,7 @@ function getFunc(key) {
                     + ' * '
                     + getNbsp()
                 )
-                + getHtmlMain(functionArea))
+                + getHtmlMain(functionArea + 'dt'))
         )
     ;
 
