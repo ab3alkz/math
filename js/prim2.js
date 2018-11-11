@@ -121,7 +121,11 @@ function getCramerF2(key) {
 
 
     var kxt = resultObj[key]['Δ(t)'];
-    kxt.q = 0 - kxt.q;
+    if (kxt) {
+        kxt.q = 0 - kxt.q;
+    } else {
+        return res;
+    }
     res += getBR(5) +
         getFrame(
             getHtmlMain(getNbsp() + " =  " + getNbsp())
@@ -433,6 +437,9 @@ function shortestKxtFinalPlus(key) {
 function getFunc(key) {
 
     var kxt = resultObj[key]['Δ(t)'];
+    if (!kxt) {
+        return getBR();
+    }
     var rF = resultObj[key]['Kxt']['rF'];
 
     var res_ = '';
@@ -473,8 +480,8 @@ function getFunc(key) {
                     + ' * '
                     + getNbsp()
                 )
-                + getHtmlMain(functionArea )
-                + getHtmlMain( 'dt' ))
+                + getHtmlMain(functionArea)
+                + getHtmlMain('dt'))
         )
     ;
 
