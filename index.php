@@ -217,11 +217,11 @@
                             Дәріс бойынша сынақ өту </a>
 
                         <?php
+
+                    }
                         if ($myrow['prim'] && $myrow['prim'] > 0) {
                             echo '<a href="math.php?prim=' . $myrow['prim'] . '" class="btn btn-success"><i class="fa fa-calculator"></i>&nbsp;Есеп шығару</a>';
                         }
-                    }
-
 
                     }
                     } while ($myrow = mysql_fetch_array($result));
