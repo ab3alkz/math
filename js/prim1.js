@@ -74,30 +74,31 @@ function getDiscriminant(a, b, c, key) {
     );
 
 
-    resultObj[key].K1 = mathRound((0 - a - Math.sqrt(resultObj[key].D)) / 2);
-
+    resultObj[key].K1 = mathRound((-2 - Math.sqrt(resultObj[key].D)) / 2);
+    var rr_ = '';
+    if (resultObj[key].D > 0) {
+        rr_ = getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1);
+    }
     res += getFrame(getHtmlMain(' ')) + getFrame(
             getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ')
             + getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
-                + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+                + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + rr_
         );
 
+
+    resultObj[key].K2 = mathRound((-2 + Math.sqrt(resultObj[key].D)) / 2);
+    var rr_ = '';
     if (resultObj[key].D > 0) {
-        res += getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1);
+        rr_ = getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2);
     }
-
-
-    resultObj[key].K2 = mathRound((0 - a + Math.sqrt(resultObj[key].D)) / 2);
 
     res += getFrame(getHtmlMain(' ')) + getFrame(
             getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ')
             + getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
-                + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2))
+                + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + rr_
         );
 
-    if (resultObj[key].D > 0) {
-        res += getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2);
-    }
+
     return res;
 }
 
