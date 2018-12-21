@@ -38,7 +38,28 @@
     <script src="js/utl.js" defer></script>
     <script src="js/prim1.js" defer></script>
     <script src="js/prim2.js" defer></script>
+    <script src="js/prim3.js" defer></script>
 </head>
+<script type="text/javascript" src="tinymce/tiny_mce.js"></script>
+
+<script type="text/javascript">
+    tinyMCE.init({
+
+        language: "ru",
+        // General options
+        mode: "specific_textareas",
+        editor_selector: "mceEditor",
+        editor_deselector: "mceNoEditor",
+        theme: "advanced",
+
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "left",
+        skin: "o2k7"
+
+    });
+
+</script>
+
 <body data-ng-app="fhApp">
 <div id="top-nav">
     <div class="container">
@@ -61,7 +82,8 @@
                     if (isset($cuser)) {
                         ?>
                     <a class="btn btn-default btn-sm" href="profile.php">
-                        <img src="./img/imediasun.png" width="15" height="15" class="vertical avatar img-rounded " style="margin-right: 3px"> <?php echo $username; ?>
+                        <img src="./img/imediasun.png" width="15" height="15" class="vertical avatar img-rounded "
+                             style="margin-right: 3px"> <?php echo $username; ?>
                     </a>
                     <a class="btn btn-default btn-sm" href="?exit">
                         <i class="fa fa-sign-out-alt"></i>
@@ -133,16 +155,18 @@
                 </div>
 
                 <BR/>
-
-                <p>1 коэфицент: <input type="number" id="n1" value="2"></p>
-                <p>2 коэфицент: <input type="number" id="n2" value="-3"></p>
-                <br/><br/><!--
+                <div class="areaMath">
+                    <p>1 коэфицент: <input type="number" id="n1" value="2"></p>
+                    <p>2 коэфицент: <input type="number" id="n2" value="-3"></p>
+                    <br/><br/><!--
                 <p>функция: <input type="text" id="n3"></p>
                 <button onclick="calcPrim1()">Есепте</button>-->
 
-                <button onclick="calcPrim2()"> Есептелу жолы</button>
+                    <button onclick="startPrim3('key')"> Есептелу жолы</button>
 
+                </div>
                 <hr>
+
                 <p id="out"></p>
                 <br>
                 <div class="clearfix"></div>
@@ -153,7 +177,7 @@
 
             <div class="col-md-3 col-md-pull-9">
                 <div class="well well-sm smaller">
-                 </div>
+                </div>
             </div>
         </div>
     </div>
@@ -331,5 +355,14 @@
 <script src="js/update.min.js"
         async=""></script>
 <!--<i class="fa fa-chevron-up" id="back-to-top" style="display: inline;"></i>-->
- </body>
+</body>
 </html>
+
+<style>
+    .areaMath #functionArea_toolbar1,
+    .areaMath #functionArea_toolbar2,
+    .areaMath #functionArea_hr,
+    .areaMath #functionArea_visualaid {
+        display: none;
+    }
+</style>
