@@ -18,8 +18,9 @@ function getFormula3(key) {
         getHtmlMain("y''(x)")
         + getHtmlIdx(' + p', 1) + getHtmlMain("y'(x)")
         + getHtmlIdx(' + p', 2) + getHtmlMain("y(x) = 0")
-    )  + getFrame(getHtmlMain("y(0) = h(0), "))
-        + getFrame(getHtmlMain("y'(0) = h'(0) "));;
+        ) + getFrame(getHtmlMain("y(0) = h(0), "))
+        + getFrame(getHtmlMain("y'(0) = h'(0) "));
+    ;
 }
 
 
