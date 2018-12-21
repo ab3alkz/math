@@ -20,7 +20,7 @@ function getFormula3(key) {
         + getHtmlIdx(' + p', 2) + getHtmlMain("y(x) = 0")
         ) + getFrame(getHtmlMain("y(0) = h(0), "))
         + getFrame(getHtmlMain("y'(0) = h'(0) "));
-    ;
+
 }
 
 
