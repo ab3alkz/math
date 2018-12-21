@@ -39,6 +39,7 @@
     <script src="js/utl.js" defer></script>
     <script src="js/prim1.js" defer></script>
     <script src="js/prim2.js" defer></script>
+    <script src="js/prim3.js" defer></script>
 </head>
 <body data-ng-app="fhApp">
 <div id="top-nav">
