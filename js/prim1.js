@@ -75,21 +75,19 @@ function getDiscriminant(a, b, c, key) {
         + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].D)
     );
 
-    console.log(b, resultObj[key].D, Math.sqrt(resultObj[key].D), (b - Math.sqrt(resultObj[key].D)), mathRound((b - Math.sqrt(resultObj[key].D)) / 2))
-    resultObj[key].K1 = mathRound((b - Math.sqrt(resultObj[key].D)) / 2);
+    resultObj[key].K1 = mathRound((0 - b - Math.sqrt(resultObj[key].D)) / 2);
     var rr_ = '';
     if (resultObj[key].D > 0) {
         rr_ = getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1);
     }
     res += getFrame(getHtmlMain(' ')) + getFrame(
         getHtmlIdx('k', 1) + getHtmlMain(getNbsp() + ' = ')
-        + getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+        + getFraction(getHtmlMain(isCondition(0 - b < 0, '', '-') + 0 - b)
         + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + rr_
     );
 
-    console.log(b, resultObj[key].D, Math.sqrt(resultObj[key].D), (b + Math.sqrt(resultObj[key].D)), mathRound((b + Math.sqrt(resultObj[key].D)) / 2))
 
-    resultObj[key].K2 = mathRound((b + Math.sqrt(resultObj[key].D)) / 2);
+    resultObj[key].K2 = mathRound((0 - b + Math.sqrt(resultObj[key].D)) / 2);
     var rr_ = '';
     if (resultObj[key].D > 0) {
         rr_ = getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2);
@@ -97,7 +95,7 @@ function getDiscriminant(a, b, c, key) {
 
     res += getFrame(getHtmlMain(' ')) + getFrame(
         getHtmlIdx('k', 2) + getHtmlMain(getNbsp() + ' = ')
-        + getFraction(getHtmlMain(isCondition(b < 0, '', '-') + b)
+        + getFraction(getHtmlMain(isCondition(0 - b < 0, '', '-') + 0 - b)
         + getHtmlMain(' + ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + rr_
     );
 
@@ -176,7 +174,7 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         getHtmlIdx("y'", Y_idx) + getHtmlMain("(0) = ")
         + getHtmlIdx(isCondition(k1 == 1, '', Math.abs(k1)) + 'c', 1)
         + getHtmlMain(' + ')
-        + getHtmlIdx(isCondition(k2 == 1, '',Math.abs( k2)) + 'c', 2) + getHtmlMain(' = ' + y_)
+        + getHtmlIdx(isCondition(k2 == 1, '', Math.abs(k2)) + 'c', 2) + getHtmlMain(' = ' + y_)
         )
     );
 
@@ -264,6 +262,6 @@ function getKramerY(C1, C2, x, k1, k2, key, Y_idx) {
 function getKramerY_(C1, C2, x, k1, k2) {
     return getHtmlMain(getMathMultiplication(mathRound(k1 * C1)))
         + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + x)
-         + getHtmlPlus(mathRound(k2 * C2)) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
+        + getHtmlPlus(mathRound(k2 * C2)) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
 
 }
