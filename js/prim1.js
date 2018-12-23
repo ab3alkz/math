@@ -23,6 +23,8 @@ function getPrim1(key) {
         alert("2 коэфицент: '" + k2 + "' сан болуы керек");
         return;
     }
+    k1= Number(k1);
+    k2= Number(k2);
     return startCalc(k1, k2, key);
 }
 
@@ -73,7 +75,7 @@ function getDiscriminant(a, b, c, key) {
         + getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].D)
     );
 
-
+    console.log(b,resultObj[key].D,Math.sqrt(resultObj[key].D), (b - Math.sqrt(resultObj[key].D)),  mathRound((b - Math.sqrt(resultObj[key].D)) / 2))
     resultObj[key].K1 = mathRound((b - Math.sqrt(resultObj[key].D)) / 2);
     var rr_ = '';
     if (resultObj[key].D > 0) {
@@ -85,6 +87,7 @@ function getDiscriminant(a, b, c, key) {
                 + getHtmlMain(' - ') + getHtmlSqrt(resultObj[key].D), getHtmlMain(2)) + rr_
         );
 
+    console.log(b,resultObj[key].D,Math.sqrt(resultObj[key].D), (b + Math.sqrt(resultObj[key].D)),  mathRound((b + Math.sqrt(resultObj[key].D)) / 2))
 
     resultObj[key].K2 = mathRound((b + Math.sqrt(resultObj[key].D)) / 2);
     var rr_ = '';
