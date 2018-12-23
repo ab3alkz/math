@@ -74,7 +74,7 @@ function getDiscriminant(a, b, c, key) {
     );
 
 
-    resultObj[key].K1 = mathRound((-2 - Math.sqrt(resultObj[key].D)) / 2);
+    resultObj[key].K1 = mathRound((b - Math.sqrt(resultObj[key].D)) / 2);
     var rr_ = '';
     if (resultObj[key].D > 0) {
         rr_ = getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K1);
@@ -86,7 +86,7 @@ function getDiscriminant(a, b, c, key) {
         );
 
 
-    resultObj[key].K2 = mathRound((-2 + Math.sqrt(resultObj[key].D)) / 2);
+    resultObj[key].K2 = mathRound((b + Math.sqrt(resultObj[key].D)) / 2);
     var rr_ = '';
     if (resultObj[key].D > 0) {
         rr_ = getHtmlMain(getNbsp() + ' = ') + getHtmlMain(resultObj[key].K2);

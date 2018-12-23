@@ -26,7 +26,23 @@ function getFormula3(key) {
 
 
 function calcPrim3(key) {
-    var res = ' ' + key;
+
+    var p1 = document.getElementById('p1').value;
+    var p2 = document.getElementById('p2').value;
+
+    resultObj[key] = {};
+
+    if (!$.isNumeric(p1)) {
+        alert("p1 коэфицент: '" + p1 + "' сан болуы керек");
+        return;
+    }
+    if (!$.isNumeric(p2)) {
+        alert("p2 коэфицент: '" + p2 + "' сан болуы керек");
+        return;
+    }
+
+
+    var res = '';
     /*  res = getPrim1(key);
       if (resultObj[key].D > 0) {
           res += '<h1>Сонымен:</h1>';
@@ -35,5 +51,18 @@ function calcPrim3(key) {
 
           res += getFunc(key);
       }*/
+
+    res += getDiv('(1) - (3) есептің шішімі', 'title');
+    res += getFrame(
+        getHtmlMain("y(x) = h(0)")
+        + getHtmlIdx("y", 1)
+        + getHtmlMain("(x) + h'(0)")
+        + getHtmlIdx("y", 2)
+        + getHtmlMain("(x)")
+    );
+
+    res += getDiv('түрінде болады', 'title');
+
+
     document.getElementById('out').innerHTML = res;
 }
