@@ -174,9 +174,9 @@ function getCramer(key, Y_idx, k1, k2, y, y_) {
         )
         + getFrame(
         getHtmlIdx("y'", Y_idx) + getHtmlMain("(0) = ")
-        + getHtmlIdx(isCondition(k1 == 1, '', k1) + 'c', 1)
+        + getHtmlIdx(isCondition(k1 == 1, '', Math.abs(k1)) + 'c', 1)
         + getHtmlMain(' + ')
-        + getHtmlIdx(isCondition(k2 == 1, '', k2) + 'c', 2) + getHtmlMain(' = ' + y_)
+        + getHtmlIdx(isCondition(k2 == 1, '',Math.abs( k2)) + 'c', 2) + getHtmlMain(' = ' + y_)
         )
     );
 
@@ -256,15 +256,14 @@ function getKramerY(C1, C2, x, k1, k2, key, Y_idx) {
     resultObj[key]["kramerY" + Y_idx + 'x' + x] = obj;
 
     return getHtmlMain(C1) + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + x)
-        + getHtmlMain(" + " + getNbsp())
-        + getHtmlMain(C2) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
+
+        + getHtmlPlus(C2) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
 
 }
 
 function getKramerY_(C1, C2, x, k1, k2) {
     return getHtmlMain(getMathMultiplication(mathRound(k1 * C1)))
         + getHtmlSqr("e", isCondition(k1 == 1, '', k1) + x)
-        + getHtmlMain(" + " + getNbsp())
-        + getHtmlMain(getMathMultiplication(mathRound(k2 * C2))) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
+         + getHtmlPlus(mathRound(k2 * C2)) + getHtmlSqr("e", isCondition(k2 == 1, '', k2) + x);
 
 }
