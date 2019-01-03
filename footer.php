@@ -65,7 +65,9 @@
                 </a>
             </div>
         </div>
+
     </div>
+    <div class="clearfix" style="padding-bottom: 10px" ></div>
     <div id="footer-extra">
         <div class="container">
             <div class="row">
