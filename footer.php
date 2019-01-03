@@ -3,17 +3,15 @@
     <div class="container">
         <div class="row" id="footer">
             <div class="col-md-6 col-xs-12 clearfix">
-                <h4 style="color: inherit">Полезная информация</h4>
                 <ul class="clearfix">
-                    <li><a href="/register"><strong>Тіркелу</strong></a></li>
-                    <li><a href="/profile/lostpassword"><strong>Забыли пароль?</strong></a> 💁
+                    <li><a href="?action=register"><strong>Тіркелу</strong></a></li>
+                    <li><a href="?action=lostpassword"><strong>Пароль ұмыттыңызба?</strong></a> 💁
                     </li>
 
 
                 </ul>
             </div>
             <div class="col-md-6 col-xs-12 clearfix social-networks">
-                <h4 style="color: inherit">Оставайтесь на связи!</h4>
                 <a class="fa-stack fa-lg no-external-marker no-underline" href="https://twitter.com/flhinside"
                    target="_blank" title="" rel="nofollow" data-original-title="Новости сервиса в Twitter">
                     <img src="./img/twitter.svg"
