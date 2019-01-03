@@ -116,8 +116,8 @@ function getCramerF2(key) {
             getHtmlMain(getBR(2) + "k(x,t) = ")
             + getHtmlMain(getBR() + getFraction(1, res_inner))
             + getDiv(
-                getDiv(resultObj[key]["kramerY1x"] + getBR() + resultObj[key]["kramerY1"], 'cramer-left')
-                + getDiv(resultObj[key]["kramerY2x"] + getBR() + resultObj[key]["kramerY2"], 'cramer-right'), "cramer-border math-inner")
+            getDiv(resultObj[key]["kramerY1x"] + getBR() + resultObj[key]["kramerY1"], 'cramer-left')
+            + getDiv(resultObj[key]["kramerY2x"] + getBR() + resultObj[key]["kramerY2"], 'cramer-right'), "cramer-border math-inner")
             + getHtmlMain(getBR() + getNbsp() + " =  ")
         );
 
@@ -132,9 +132,9 @@ function getCramerF2(key) {
         getFrame(
             getHtmlMain(getNbsp() + " =  " + getNbsp())
             + getHtmlSqr(
-                isCondition(kxt.v < 0, '-', '')
-                + isCondition(Math.abs(kxt.v) == 1, '', Math.abs(kxt.v)) + "e",
-                kxt.q + 't'
+            isCondition(kxt.v < 0, '-', '')
+            + isCondition(Math.abs(kxt.v) == 1, '', Math.abs(kxt.v)) + "e",
+            kxt.q + 't'
             )
             + getHtmlBrackets(plusKxt(key))
             + getHtmlMain(getNbsp() + " = " + getNbsp())
@@ -428,7 +428,7 @@ function shortestKxtFinalPlus(key) {
             var qt = aa.qt + kxt.q;
             subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
                 + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '')
-                        + mathRound4(Math.abs(qt))) + 't')
+                    + mathRound4(Math.abs(qt))) + 't')
         }
         res += getHtmlBrackets(subRes);
     }
@@ -462,7 +462,7 @@ function getFunc(key) {
             var qt = aa.qt + kxt.q;
             subRes += getHtmlSqr("e", isCondition(aa.qx == 1, '', aa.qx) + 'x')
                 + getHtmlSqr("e", isCondition(Math.abs(qt) == 1, isCondition(qt < 0, '-', ''), isCondition(qt < 0, '-', '')
-                        + mathRound4(Math.abs(qt)))
+                    + mathRound4(Math.abs(qt)))
                     + 't'
                 )
         }
@@ -475,17 +475,20 @@ function getFunc(key) {
             contents[inst] = tinyMCE.editors[inst].getContent();
         console.log('inst', inst, tinyMCE.editors[inst].getContent())
     }
-    var functionArea = tinyMCE.editors[0].getContent();
+    var functionArea='';
+    if (tinyMCE.editors[0]) {
+          functionArea  = tinyMCE.editors[0].getContent();
+    }
+
     var res = getFrame(getHtmlMain(getBR() + "y(x) = " + isCondition(kxt.v < 0, '-', ''))
-            + getHtmlIntegral(res_
-                + getHtmlMain(getNbsp()
-                    + ' * '
-                    + getNbsp()
-                )
-                + getHtmlMain(functionArea)
-                + getHtmlMain('dt'))
+        + getHtmlIntegral(res_
+            + getHtmlMain(getNbsp()
+                + ' * '
+                + getNbsp()
+            )
+            + getHtmlMain(functionArea)
+            + getHtmlMain('dt'))
         )
     ;
-
     return res;
 }

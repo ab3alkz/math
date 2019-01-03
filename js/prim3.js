@@ -43,26 +43,22 @@ function calcPrim3(key) {
 
 
     var res = '';
-    /*  res = getPrim1(key);
-      if (resultObj[key].D > 0) {
-          res += '<h1>Сонымен:</h1>';
-          res += getCramerF2(key);
-          res += getBR(2) + '<h1>Сондықтан:</h1>';
-
-          res += getFunc(key);
-      }*/
-
-    res += getDiv('(1) - (3) есептің шішімі', 'title');
     res += getFrame(
-        getHtmlMain("y(x) = h(0)")
-        + getHtmlIdx("y", 1)
-        + getHtmlMain("(x) + h'(0)")
-        + getHtmlIdx("y", 2)
-        + getHtmlMain("(x)")
+        getHtmlMain("y''(x) ") + getHtmlPlus(p1)
+        + getHtmlMain("y'(x) ") + getHtmlPlus(p2)
+        + getHtmlMain("y(x) = 0")
     );
+    res += getDiscriminant(1, p1, p2, key)
 
-    res += getDiv('түрінде болады', 'title');
+    res += getBR() + getDiv('Ортақ шешімі:', 'title');
+    if (resultObj[key].D < 0) {
+        res += commonDecisionLeastZero(resultObj[key].K1, resultObj[key].K2, k1, k2, key);
+    } else {
+        res += commonDecision(resultObj[key].K1, resultObj[key].K2, key);
+    }
 
-
+    if (resultObj[key].D > 0) {
+        res += getBR() + "<hr>" + getDiv('Сонымен:', 'title');
+    }
     document.getElementById('out').innerHTML = res;
 }
