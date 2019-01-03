@@ -48,7 +48,7 @@ function calcPrim3(key) {
         + getHtmlMain("y'(x) ") + getHtmlPlus(p2)
         + getHtmlMain("y(x) = 0")
     );
-    res += getDiscriminant(1, p1, p2, key)
+    res += getDiscriminant(1, p1, p2, key);
 
     res += getBR() + getDiv('Ортақ шешімі:', 'title');
     if (resultObj[key].D < 0) {

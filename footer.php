@@ -8,19 +8,7 @@
                     <li><a href="/register"><strong>Тіркелу</strong></a></li>
                     <li><a href="/profile/lostpassword"><strong>Забыли пароль?</strong></a> 💁
                     </li>
-                    <li><a href="https://feedback.ESEPTE.KZ/forums/3-baza-znanij" target="_blank">База
-                            знаний</a></li>
-                    <li><a href="https://feedback.ESEPTE.KZ/" target="_blank" rel="nofollow">Идеи и
-                            предложения</a></li>
-                    <li><a href="/service/rules">Правила сервиса</a></li>
-                    <li><a href="/service/privacy">Конфиденциальность</a></li>
-                    <li><a href="/service/press">Мы в прессе</a></li>
-                    <li><a href="/service/bonus" title=""
-                           data-original-title="Бонус программа — начните зарабатывать прямо сейчас!">Бонус
-                            программа</a></li>
-                    <li><a href="/statistics/rates" title=""
-                           data-original-title="Распределение цен на рынке фриланса на базе прайс-листов, предоставленных исполнителями">Статистика
-                            цен</a></li>
+
 
                 </ul>
             </div>
@@ -84,14 +72,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    Қазақстанда жасалған © 2017-2018 <span style="color: #e74c3c;">❤</span>
-                    <a href="https://updown.io/npu7" target="_blank" rel="nofollow noopener"><i class="fa fa-sun-o"
-                                                                                                style="color: gold;"
-                                                                                                title="Аптайм"></i></a>
+                    Қазақстанда жасалған © 2017-2019 <span style="color: #e74c3c;">❤</span>
                 </div>
                 <div class="col-sm-4 text-center">
                     <i class="fa fa-envelope-o"></i>&nbsp;<a
-                        href="mailto:%73%75%70%70%6f%72%74@%66%72%65%65%6c%61%6e%63%65%68%75%6e%74.%63%6f%6d">support@ESEPTE.KZ</a>
+                        href="mailto:support@ESEPTE.KZ">support@ESEPTE.KZ</a>
                 </div>
 
             </div>
