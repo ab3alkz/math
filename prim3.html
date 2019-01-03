@@ -191,7 +191,7 @@
     <div class="container">
         <div class="row" id="footer">
             <div class="col-md-6 col-xs-12 clearfix">
-                <ul class=" ">
+                <ul class="clearfix">
                     <li><a href="?action=register"><strong>Тіркелу</strong></a></li>
                     <li><a href="?action=lostpassword"><strong>Пароль ұмыттыңызба?</strong></a> 💁
                     </li>
@@ -253,6 +253,7 @@
                 </a>
             </div>
         </div>
+
     </div>
     <div class="clearfix" style="padding-bottom: 10px" ></div>
     <div id="footer-extra">
@@ -324,20 +325,31 @@
     </div>
 </div>
 <script type="text/javascript" async=""
-        src="./js/mixpanel-2-latest.min.js"></script>
+        src="js/mixpanel-2-latest.min.js"></script>
 
 <!--[if lt IE 9]>
 <script src=https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js crossorigin="anonymous"></script>
 <![endif]-->
 <!--[if gte IE 9]><!-->
-<script src="./js/jquery.min.js"
+<script src="js/jquery.min.js"
         crossorigin="anonymous"></script>
 <!--<![endif]-->
-<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
-<script src="./js/bootstrap.min.js"
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"
         crossorigin="anonymous"></script>
 
 
-<script src="./js/update.min.js"
+<script src="js/update.min.js"
         async=""></script>
 <!--<i class="fa fa-chevron-up" id="back-to-top" style="display: inline;"></i>-->
+</body>
+</html>
+
+<style>
+    .areaMath #functionArea_toolbar1,
+    .areaMath #functionArea_toolbar2,
+    .areaMath #functionArea_hr,
+    .areaMath #functionArea_visualaid {
+        display: none;
+    }
+</style>
