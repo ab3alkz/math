@@ -39,11 +39,11 @@ function nvl(val1, val2) {
         return val1;
 }
 
-function isCondition(condition, trueVal, falseVAl) {
+function isCondition(condition, trueVal, falseVal) {
     if (condition)
         return trueVal;
     else
-        return falseVAl;
+        return falseVal;
 }
 
 function isNullOrEmpty(e) {

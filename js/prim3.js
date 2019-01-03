@@ -4,13 +4,14 @@
 function startPrim3(key) {
     if (document.getElementById('mathFormula')) {
         document.getElementById('mathFormula').innerHTML = getFormula3()
-            + getFrame(getHtmlMain("0 < x < 1 "));
+            + getDiv(getFrame(getHtmlMain("0 < x < 1 ")), "zhagdai1")
+            + getDiv(getFrame(getHtmlMain("0 < x < c - 0, c + 0 < x < 1 ")), "zhagdai2");
         calcPrim3(key);
     }
 }
 
 function getFormula3(key) {
-
+    onchange05();
     resultObj[key] = {};
 
 
@@ -32,17 +33,22 @@ function calcPrim3(key) {
 
     resultObj[key] = {};
 
-    if (!$.isNumeric(p1)) {
-        alert("p1 коэфицент: '" + p1 + "' сан болуы керек");
+    if (!mathIsNumeric(p1)) {
         return;
     }
-    if (!$.isNumeric(p2)) {
-        alert("p2 коэфицент: '" + p2 + "' сан болуы керек");
+    if (!mathIsNumeric(p2)) {
         return;
     }
 
 
     var res = '';
+    //[y]1/2
+    res += getFrame(
+        getHtmlIdx("[y]", getFraction(1, 2))
+    );
+
+    document.getElementById('out').innerHTML = res;
+    return res;
     res += getFrame(
         getHtmlMain("y''(x) ") + getHtmlPlus(p1)
         + getHtmlMain("y'(x) ") + getHtmlPlus(p2)
@@ -61,4 +67,31 @@ function calcPrim3(key) {
         res += getBR() + "<hr>" + getDiv('Сонымен:', 'title');
     }
     document.getElementById('out').innerHTML = res;
+}
+
+function onchange05() {
+    var y05 = document.getElementById("y05").value;
+    var y_05 = document.getElementById("y_05").value;
+    if (!isNullOrEmpty(y05) || !isNullOrEmpty(y_05)) {
+        $(".math-zhagdai2").show();
+        $(".math-zhagdai1").hide();
+    } else {
+        $(".math-zhagdai2").hide();
+        $(".math-zhagdai1").show();
+    }
+
+
+    if (isNullOrEmpty(y05) || isNullOrEmpty(y_05)) {
+
+        return;
+    }
+    if (!mathIsNumeric(y05)) {
+        return;
+    }
+    if (!mathIsNumeric(y_05)) {
+        return;
+    }
+
+
+    console.log(y05, y_05)
 }
