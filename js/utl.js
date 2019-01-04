@@ -125,7 +125,7 @@ function mathIsNumeric(n) {
 }
 
 function getFraction(top, bottom) {
-    var val = '<table><tr class="math-fraction-top"><td>' + top + '</td></tr><tr><td class="math-fraction-bottom">' + bottom + '</td></tr></table>';
+    var val = '<table><tr class="math-fraction-top"><td>' + top + '</td></tr><tr class="math-fraction-bottom"><td >' + bottom + '</td></tr></table>';
     return getDiv(val, "fraction");
 }
 
@@ -141,8 +141,8 @@ function mathRound4(num) {
     return Math.round(num * 10000) / 10000;
 }
 
-function getHtmlBraceLeft(val, braceTxt) {
-    return getDiv(nvl(braceTxt, ''), 'brace-left') + getDiv(val, "brace") + getClearfix()
+function getHtmlBraceLeft(val, braceTxt, class_) {
+    return getDiv(nvl(braceTxt, ''), 'brace-left '+class_) + getDiv(val, "brace") + getClearfix()
 }
 
 function getHtmlBraceRight(val, braceTxt) {
@@ -152,7 +152,6 @@ function getHtmlBraceRight(val, braceTxt) {
 function getHtmlBrackets(v) {
     return getDiv(getDiv(getDiv(v), 'main math-brackets'), 'inner')
 }
-
 
 function getHtmlIntegral(v) {
     return getDiv(getDiv('x', 'integral-top clearfix')

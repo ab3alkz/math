@@ -39,6 +39,13 @@
     float: left;
 }
 
+.math-fraction .math-frame .math-inner .math-index {
+    font-size: 12px;
+    display: inline-block;
+    padding-top: 17px!important;
+    float: left;
+}
+
 .math-title {
     font-size: 20px;
     font-weight: bold;
@@ -143,7 +150,6 @@
     float: left;
     padding-top: 5px;
     padding-right: 3px;
-
 }
 
 .math-frame .math-inner .math-sqr .math-fraction,
@@ -154,4 +160,32 @@
 
 .math-zhagdai2 {
     display: none;
+}
+
+.margin-top-12px {
+    margin-top: 12px;
+}
+
+.margin-top-20px {
+    margin-top: 20px;
+}
+
+.height200 {
+    height: 200px;
+}
+
+.height170 {
+    height: 170px;
+}
+
+.height175 {
+    height: 175px;
+}
+
+.math-floatleft {
+    float: left;
+}
+
+.math-fraction-bottom td ,.math-fraction-top td{
+    padding: 2px;
 }
