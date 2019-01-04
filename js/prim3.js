@@ -3,10 +3,11 @@
  */
 function startPrim3(key) {
     if (document.getElementById('mathFormula')) {
+
         document.getElementById('mathFormula').innerHTML = getFormula3()
             + getDiv(getFrame(getHtmlMain("0 < x < 1 ")), "zhagdai1")
             + getDiv(getFrame(getHtmlMain("0 < x < c - 0, c + 0 < x < 1 ")), "zhagdai2");
-        calcPrim3(key);
+        // calcPrim3(key);
     }
 }
 

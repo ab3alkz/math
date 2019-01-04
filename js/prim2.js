@@ -6,7 +6,7 @@ function startPrim2(key) {
         document.getElementById('mathFormula').innerHTML = getFormula()
             + getFrame(getHtmlMain("y(0) = 0 "))
             + getFrame(getHtmlMain("y'(0) = 0 "));
-        document.getElementById('out').innerHTML = calcPrim2(key);
+       // document.getElementById('out').innerHTML = calcPrim2(key);
     }
 }
 
