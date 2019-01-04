@@ -42,7 +42,7 @@
 .math-fraction .math-frame .math-inner .math-index {
     font-size: 12px;
     display: inline-block;
-    padding-top: 17px!important;
+    padding-top: 17px !important;
     float: left;
 }
 
@@ -186,6 +186,6 @@
     float: left;
 }
 
-.math-fraction-bottom td ,.math-fraction-top td{
+.math-fraction-bottom td, .math-fraction-top td {
     padding: 2px;
 }
