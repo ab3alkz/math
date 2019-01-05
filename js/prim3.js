@@ -188,7 +188,7 @@ function calcPrim3(key) {
                 getHtmlMain(getDiv(" = " + getNbsp(), " margin-top-12px"))
                 + getHtmlMain(getDiv(h0, " margin-top-12px"))
                 + getHtmlBrackets(resultObj[key].kramerY1x)
-                + getHtmlMain(getDiv(getNbsp() + " + " + getNbsp() + h_0, " margin-top-12px"))
+                + getHtmlMain(getDiv(getNbsp() + getMathPlus(h_0)  + getNbsp() + Math.abs(h_0), " margin-top-12px"))
                 + getHtmlBrackets(resultObj[key].kramerY2x)
             );
 
