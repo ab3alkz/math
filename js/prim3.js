@@ -143,7 +143,7 @@ function calcPrim3(key) {
                 getHtmlMain(getDiv(" = " + getNbsp(), " margin-top-12px"))
                 + getHtmlMain(getDiv(h0, " margin-top-12px"))
                 + getHtmlBrackets(resultObj[key].kramerY1x)
-                + getHtmlMain(getDiv(getNbsp() + " + " + getNbsp() + h_0, " margin-top-12px"))
+                + getHtmlMain(getDiv(getNbsp() + getMathPlus(h_0)  + getNbsp() + Math.abs(h_0), " margin-top-12px"))
                 + getHtmlBrackets(resultObj[key].kramerY2x)
                 + getClearfix() + getBR(2)
                 + getHtmlMain(getBR(2) + getNbsp() + " + " + getNbsp())
@@ -158,7 +158,7 @@ function calcPrim3(key) {
                         getDiv(getHtmlIdx("y'", 1) + getHtmlMain("(c)") + getBR() + getDiv(getHtmlIdx("y", 1) + getHtmlMain("(c)"), "floatleft"), 'cramer-left')
                         + getDiv(getHtmlIdx("y'", 2) + getHtmlMain("(c)") + getBR() + getDiv(getHtmlIdx("y", 2) + getHtmlMain("(c)"), "floatleft"), 'cramer-right'), "cramer-border math-inner")
                     ) +
-                    getHtmlMain(getBR(2) + getNbsp() + " + " + getNbsp() + y_05 + " * ")
+                    getHtmlMain(getBR(2) + getNbsp() + getMathPlus(y_05) + getNbsp() + Math.abs(y_05) + " * ")
                     + getFraction(
                     getDiv(
                         getDiv(getHtmlIdx("y", 1) + getHtmlMain("(x)") + getBR() + getDiv(getHtmlIdx("y'", 1) + getHtmlMain("(c)"), "floatleft"), 'cramer-left')
