@@ -189,3 +189,7 @@
 .math-fraction-bottom td, .math-fraction-top td {
     padding: 2px;
 }
+
+.math-inner.prim3-left {
+    width: 50px;
+}

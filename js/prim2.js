@@ -3,12 +3,22 @@
  */
 function startPrim2(key) {
     if (document.getElementById('mathFormula')) {
-        document.getElementById('mathFormula').innerHTML = getFormula()
+        document.getElementById('mathFormula').innerHTML = getFormula2()
             + getFrame(getHtmlMain("y(0) = 0 "))
             + getFrame(getHtmlMain("y'(0) = 0 "));
        // document.getElementById('out').innerHTML = calcPrim2(key);
     }
 }
+
+function getFormula2(k1, k2) {
+    return getFrame(
+        getHtmlMain("y''(x)")
+        + isCondition(!isNullOrEmpty(k1), getHtmlPlus(k1), getHtmlIdx(' + k', 1)) + getHtmlMain("y'")
+        + isCondition(!isNullOrEmpty(k2), getHtmlPlus(k2), getHtmlIdx(' + k', 2))
+        + getHtmlMain("y(x) = f(x)")
+    );
+}
+
 
 
 function calcPrim2(key) {
