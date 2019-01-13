@@ -100,6 +100,13 @@ function myTest($action, $id, $role, $lecture, $db)
                             $answf1 = $_POST['answf1'];
                             $answf2 = $_POST['answf2'];
                             $answf3 = $_POST['answf3'];
+                            $question = str_replace("'", '`', $question);
+                            $answt = str_replace("'", '`', $answt);
+                            $answf1 = str_replace("'", '`', $answf1);
+                            $answf2 = str_replace("'", '`', $answf2);
+                            $answf3 = str_replace("'", '`', $answf3);
+
+
                             if ($idQ == 0 || $idQ == '') {
                                 $result = mysql_query("insert into questions (question,answt,answf1,answf2,answf3,test) values('$question','$answt','$answf1','$answf2','$answf3','$id')", $db);
                                 if ($result == true) {
