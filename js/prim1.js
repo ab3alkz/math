@@ -48,7 +48,12 @@ function getFormula(k1, k2) {
 
 function startCalc(k1, k2, key) {
 
-    var res = getFormula(k1, k2);
+    var res = '';
+    if (key == 'prim2') {
+        res = getFormula2(k1, k2);
+    } else {
+        res = getFormula(k1, k2);
+    }
 
     res += getDiv('Дискриминант:', 'title');
     res += getDiscriminant(1, k1, k2, key);

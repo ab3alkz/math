@@ -57,7 +57,12 @@
 
                             <?php
                             echo $primmyrow['form'] . ' <br/><br/>';
-                            echo '<button onclick="' . $primmyrow['fnc'] . '"> Есептелу жолы</button>';
+                            if(isset($_SESSION["cuser"])) {
+                                echo '<button onclick="' . $primmyrow['fnc'] . '"> Есептелу жолы</button>';
+                            } else {
+                                echo '<button onclick="notCuser()"> Есептелу жолы</button>';
+                            }
+                            
                         } while ($primmyrow = mysql_fetch_array($primresult));
                     }
                     ?>
@@ -94,3 +99,8 @@
         display: none;
     }
 </style>
+<script>
+    function notCuser() {
+        alert('Есеп нәтижесін көру үшін тіркелу керек!')
+    }
+</script>

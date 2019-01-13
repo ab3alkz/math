@@ -22,7 +22,7 @@ function getFormula2(k1, k2) {
 
 
 function calcPrim2(key) {
-
+    key = nvl(key,'prim2')
     var res = getPrim1(key);
     if (resultObj[key].D > 0) {
         res += '<h1>Сонымен:</h1>';
