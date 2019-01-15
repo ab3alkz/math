@@ -193,3 +193,9 @@
 .math-inner.prim3-left {
     width: 50px;
 }
+
+.math-cramer-idx {
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -10px;
+}

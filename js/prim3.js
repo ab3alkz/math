@@ -150,8 +150,8 @@ function calcPrim3(key) {
                 + getHtmlBraceLeft(
                     getHtmlMain(getBR(2) + y05 + " * ")
                     + getFraction(
-                    getDiv(
-                        getDiv(getHtmlIdx("y", 1) + getHtmlMain("(x)") + getBR() + getDiv(getHtmlIdx("y'", 1) + getHtmlMain("(c)"), "floatleft"), 'cramer-left')
+                     getDiv(
+                         getDiv(0,"cramer-idx")+getDiv(getHtmlIdx("y", 1) + getHtmlMain("(x)") + getBR() + getDiv(getHtmlIdx("y'", 1) + getHtmlMain("(c)"), "floatleft"), 'cramer-left')
                         + getDiv(getHtmlIdx("y", 2) + getHtmlMain("(x)") + getBR() + getDiv(getHtmlIdx("y'", 2) + getHtmlMain("(c)"), "floatleft"), 'cramer-right'), "cramer-border math-inner")
                     + getNbsp(),
                     getDiv(
